@@ -25,11 +25,16 @@ SECRET_KEY = 'django-insecure-hv-2w2j6)ue1!m1cy38^uy8c$j%%^w6_4@jgi2819z!lzsz8!t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'ascendproject.ddns.net',
+]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'http://ascendproject-foodservice.herokuapp.com',
 ]
 
 # Application definition
