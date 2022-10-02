@@ -7,6 +7,70 @@ class data_import():
         user='postgres', password='postgres')
         return con
 
+    def user(self):
+        table = pd.read_excel("exports/user.xlsx")
+        i = 0
+        try:
+            len_id = len(table['id'])
+        except:
+            len_id = 0
+        while i < len_id:
+            try:
+                conn = self.con()
+                cur = conn.cursor()
+                cur.execute(f'''
+                insert into auth_user (
+                    id,
+                    password,
+                    last_login,
+                    is_superuser,
+                    username,
+                    first_name,
+                    last_name,
+                    email,
+                    is_staff,
+                    is_active,
+                    date_joined
+                )
+                values (
+                    {table['id'][i]},
+                    '{table['password'][i]}',
+                    '{table['last_login'][i]}',
+                    {table['is_superuser'][i]},
+                    {table['username'][i]},
+                    '{table['first_name'][i]}',
+                    '{table['last_name'][i]}'
+                    '{table['email'][i]}'
+                    {table['is_staff'][i]}
+                    {table['is_active'][i]}
+                    '{table['data_joined'][i]}'
+                ) 
+                ''')
+                conn.commit()
+                conn.close()
+            except:
+                conn = self.con()
+                cur = conn.cursor()
+                cur.execute(f'''
+                update default_company set
+                    id = {table['id'][i]},
+                    password = '{table['password'][i]}',
+                    last_login = '{table['last_login'][i]}',
+                    is_superuser = {table['is_superuser'][i]},
+                    username = {table['username'][i]},
+                    first_name = '{table['first_name'][i]}',
+                    last_name = '{table['last_name'][i]}'
+                    email = '{table['email'][i]}'
+                    is_staff = {table['is_staff'][i]}
+                    is_active = {table['is_active'][i]}
+                    data_joined = '{table['data_joined'][i]}'
+                where
+                    id = {table['id'][i]}
+                ''')
+                conn.commit()
+                conn.close()
+            i+=1
+
     def company(self):
         table = pd.read_excel("exports/company.xlsx")
         i = 0
