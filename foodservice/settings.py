@@ -35,6 +35,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'http://ascendproject-foodservice.herokuapp.com',
+    'http://192.168.100.128:3000',
 ]
 
 # Application definition
@@ -96,7 +97,7 @@ WSGI_APPLICATION = 'foodservice.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'helpdesk',
+        'NAME': 'foodservice',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
