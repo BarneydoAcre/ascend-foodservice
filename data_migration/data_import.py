@@ -43,7 +43,7 @@ class data_import():
                     '{table['email'][i]}'
                     {table['is_staff'][i]}
                     {table['is_active'][i]}
-                    '{table['data_joined'][i]}'
+                    '{table['date_joined'][i]}'
                 ) 
                 ''')
                 conn.commit()
@@ -63,7 +63,7 @@ class data_import():
                     email = '{table['email'][i]}'
                     is_staff = {table['is_staff'][i]}
                     is_active = {table['is_active'][i]}
-                    data_joined = '{table['data_joined'][i]}'
+                    date_joined = '{table['date_joined'][i]}'
                 where
                     id = {table['id'][i]}
                 ''')
