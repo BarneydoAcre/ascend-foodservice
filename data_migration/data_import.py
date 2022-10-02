@@ -279,7 +279,7 @@ class data_import():
                 cur = conn.cursor()
                 cur.execute(f'''
                 update register_productbrand set
-                    brand = '{table['brand'][i]}',
+                    brand = '{table['brand'][i].replace("'", '"')}',
                     company_id = {table['company_id'][i]},
                     company_worker_id = {table['company_worker_id'][i]},
                     created = '{table['created'][i]}',
