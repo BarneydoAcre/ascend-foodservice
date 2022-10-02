@@ -265,7 +265,7 @@ class data_import():
                 )
                 values (
                     {table['id'][i]},
-                    {table['brand'][i]},
+                    {table['brand'][i].replace("'", '"')},
                     {table['company_id'][i]},
                     {table['company_worker_id'][i]},
                     '{table['created'][i]}',
