@@ -592,6 +592,7 @@ class data_import():
 
 
 if __name__ == '__main__':
+    data_import().user()
     data_import().company()
     data_import().companyposition()
     data_import().companyworker()
@@ -599,3 +600,5 @@ if __name__ == '__main__':
     data_import().newregister()
     data_import().productbrand()
     data_import().productmeasure()
+    data_import().sale() 
+    data_import().saleitems() 
