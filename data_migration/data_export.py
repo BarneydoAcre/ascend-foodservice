@@ -13,8 +13,14 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from default_company f
+            id,
+            slug,
+            company,
+            cnpj,
+            created,
+            updated,
+            owner_id
+        from default_company
         '''
         cur.execute(sql)
 
@@ -37,8 +43,12 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from default_companyposition f
+            id,
+            position,
+            created,
+            updated,
+            company_id
+        from default_companyposition
         '''
         cur.execute(sql)
 
@@ -59,8 +69,18 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from auth_user f
+            id,
+            password,
+            last_login,
+            is_superuser,
+            username,
+            first_name,
+            last_name,
+            email,
+            is_staff,
+            is_active,
+            date_joined
+        from auth_user 
         '''
         cur.execute(sql)
 
@@ -87,8 +107,16 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from default_companyworker f
+            id,
+            cpf,
+            rg,
+            phone_number,
+            created,
+            updated,
+            company_id,
+            person_id,
+            position_id
+        from default_companyworker
         '''
         cur.execute(sql)
 
@@ -113,8 +141,13 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from default_bugreport f
+            id,
+            bug,
+            created,
+            updated,
+            company_id,
+            company_worker_id
+        from default_bugreport 
         '''
         cur.execute(sql)
 
@@ -136,8 +169,14 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from default_newregister f
+            id,
+            email,
+            first_name,
+            last_name,
+            phone_number,
+            created,
+            updated
+        from default_newregister
         '''
         cur.execute(sql)
 
@@ -160,8 +199,13 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from foodservice_productbrand f
+            id,
+            brand,
+            created,
+            updated,
+            company_id,
+            company_worker_id
+        from foodservice_productbrand
         '''
         cur.execute(sql)
 
@@ -183,8 +227,13 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from foodservice_productmeasure f
+            id,
+            measure,
+            created,
+            updated,
+            company_id,
+            company_worker_id
+        from foodservice_productmeasure
         '''
         cur.execute(sql)
 
@@ -228,8 +277,19 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from foodservice_product f
+            id,
+            name,
+            stock,
+            cost,
+            created,
+            updated,
+            brand_id,
+            company_id,
+            company_worker_id,
+            measure_id,
+            price,
+            type
+        from foodservice_product
         '''
         cur.execute(sql)
 
@@ -257,8 +317,15 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from foodservice_productitems f
+            id,
+            created,
+            updated,
+            company_id,
+            company_worker_id,
+            product_id,
+            product_item_id,
+            quantity
+        from foodservice_productitems
         '''
         cur.execute(sql)
 
@@ -283,8 +350,15 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from foodservice_sale f
+            id,
+            created,
+            updated,
+            company_id,
+            company_worker_id,
+            delivery,
+            value,
+            total
+        from foodservice_sale
         '''
         cur.execute(sql)
 
@@ -309,8 +383,16 @@ class data_export():
         cur = conn.cursor()
         sql = '''
         select
-            *
-        from foodservice_saleitems f
+            id,
+            created,
+            updated,
+            company_id,
+            company_worker_id,
+            product_id,
+            price,
+            quantity,
+            sale_id
+        from foodservice_saleitems
         '''
         cur.execute(sql)
 
@@ -318,14 +400,14 @@ class data_export():
         for c in cur.fetchall():
             data.append({
                 'id': c[0],
+                'created': str(c[1])[0:26],
+                'updated': str(c[2])[0:26],
                 'company_id': c[3],
                 'company_worker_id': c[4],
                 'product_id': c[5],
                 'price': c[6],
                 'quantity': c[7],
                 'sale_id': c[8],
-                'created': str(c[1])[0:26],
-                'updated': str(c[2])[0:26],
 
             })
         table = pd.DataFrame(data).to_excel("exports/saleitems.xlsx", index=False)
