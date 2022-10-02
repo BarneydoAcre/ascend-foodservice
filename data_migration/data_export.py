@@ -25,8 +25,6 @@ class data_export():
                 'slug': c[1],
                 'company': c[2],
                 'cnpj': c[3],
-                'created': str(c[4])[0:26],
-                'updated': str(c[5])[0:26],
                 'owner_id': c[6],
             })
         table = pd.DataFrame(data).to_excel("exports/company.xlsx", index=False)
@@ -47,8 +45,6 @@ class data_export():
             data.append({
                 'id': c[0],
                 'position': c[1],
-                'created': str(c[2])[0:26],
-                'updated': str(c[3])[0:26],
                 'company_id': c[4],
             })
         table = pd.DataFrame(data).to_excel("exports/companyposition.xlsx", index=False)
@@ -99,8 +95,6 @@ class data_export():
                 'cpf': c[1],
                 'rg': c[2],
                 'phone_number': c[3],
-                'created': str(c[4])[0:26],
-                'updated': str(c[5])[0:26],
                 'company_id': c[6],
                 'person_id': c[7],
                 'position_id': c[8],
@@ -123,8 +117,6 @@ class data_export():
             data.append({
                 'id': c[0],
                 'bug': c[1],
-                'created': str(c[2])[0:26],
-                'updated': str(c[3])[0:26],
                 'company_id': c[4],
                 'company_worker_id': c[5],
             })
@@ -149,8 +141,6 @@ class data_export():
                 'first_name': c[2],
                 'last_name': c[3],  
                 'phone_number': c[4],
-                'created': str(c[5])[0:26],
-                'updated': str(c[6])[0:26],
             })
         table = pd.DataFrame(data).to_excel("exports/newregister.xlsx", index=False)
         conn.close()
@@ -170,8 +160,6 @@ class data_export():
             data.append({
                 'id': c[0],
                 'brand': c[1],
-                'created': str(c[2])[0:26],
-                'updated': str(c[3])[0:26],
                 'company_id': c[4],
                 'company_worker_id': c[5],
             })
@@ -193,8 +181,6 @@ class data_export():
             data.append({
                 'id': c[0],
                 'measure': c[1],
-                'created': str(c[2])[0:26],
-                'updated': str(c[3])[0:26],
                 'company_id': c[4],
                 'company_worker_id': c[5],
             })
@@ -240,8 +226,6 @@ class data_export():
                 'name': c[1],
                 'stock': c[2],
                 'cost': c[3],
-                'created': str(c[4])[0:26],
-                'updated': str(c[5])[0:26],
                 'brand_id': c[6],
                 'company_id': c[7],
                 'company_worker_id': c[8],
@@ -266,8 +250,6 @@ class data_export():
         for c in cur.fetchall():
             data.append({
                 'id': c[0],
-                'created': str(c[1])[0:26],
-                'updated': str(c[2])[0:26],
                 'company_id': c[3],
                 'company_worker_id': c[4],
                 'product_id': c[5],
@@ -292,8 +274,6 @@ class data_export():
         for c in cur.fetchall():
             data.append({
                 'id': c[0],
-                'created': str(c[1])[0:26],
-                'updated': str(c[2])[0:26],
                 'company_id': c[3],
                 'company_worker_id': c[4],
                 'delivery': c[5],
@@ -324,8 +304,6 @@ class data_export():
                 'price': c[6],
                 'quantity': c[7],
                 'sale_id': c[8],
-                'created': str(c[1])[0:26],
-                'updated': str(c[2])[0:26],
 
             })
         table = pd.DataFrame(data).to_excel("exports/saleitems.xlsx", index=False)
