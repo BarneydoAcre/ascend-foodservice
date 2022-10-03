@@ -1,5 +1,6 @@
 import pandas as pd
 import psycopg2 as pg
+import math
 
 class data_import():
     def con(self):
@@ -36,13 +37,13 @@ class data_import():
                     {table['id'][i]},
                     '{table['password'][i]}',
                     '{table['last_login'][i]}',
-                    {table['is_superuser'][i]},
-                    {table['username'][i]},
+                    {str(table['is_superuser'][i]).lower()},
+                    '{table['username'][i]}',
                     '{table['first_name'][i]}',
-                    '{table['last_name'][i]}'
-                    '{table['email'][i]}'
-                    {table['is_staff'][i]}
-                    {table['is_active'][i]}
+                    '{table['last_name'][i]}',
+                    '{table['email'][i]}',
+                    {str(table['is_staff'][i]).lower()},
+                    {str(table['is_active'][i]).lower()},
                     '{table['date_joined'][i]}'
                 ) 
                 ''')
@@ -52,17 +53,17 @@ class data_import():
                 conn = self.con()
                 cur = conn.cursor()
                 cur.execute(f'''
-                update default_company set
+                update auth_user set
                     id = {table['id'][i]},
                     password = '{table['password'][i]}',
                     last_login = '{table['last_login'][i]}',
-                    is_superuser = {table['is_superuser'][i]},
-                    username = {table['username'][i]},
+                    is_superuser = {str(table['is_superuser'][i]).lower()},
+                    username = '{table['username'][i]}',
                     first_name = '{table['first_name'][i]}',
-                    last_name = '{table['last_name'][i]}'
-                    email = '{table['email'][i]}'
-                    is_staff = {table['is_staff'][i]}
-                    is_active = {table['is_active'][i]}
+                    last_name = '{table['last_name'][i]}',
+                    email = '{table['email'][i]}',
+                    is_staff = {str(table['is_staff'][i]).lower()},
+                    is_active = {str(table['is_active'][i]).lower()},
                     date_joined = '{table['date_joined'][i]}'
                 where
                     id = {table['id'][i]}
@@ -366,7 +367,7 @@ class data_import():
             try:
                 conn = self.con()
                 cur = conn.cursor()
-                cur.execute(f'''
+                sql_insert = f'''
                 insert into register_productmeasure (
                     id,
                     measure,
@@ -377,13 +378,14 @@ class data_import():
                 )
                 values (
                     {table['id'][i]},
-                    {table['measure'][i]},
+                    '{table['measure'][i]}',
                     {table['company_id'][i]},
                     {table['company_worker_id'][i]},
                     '{table['created'][i]}',
                     '{table['updated'][i]}'
                 )
-                ''')
+                '''
+                cur.execute(sql_insert)
                 conn.commit()
                 conn.close()
             except:
@@ -414,7 +416,7 @@ class data_import():
             try:
                 conn = self.con()
                 cur = conn.cursor()
-                cur.execute(f'''
+                sql_insert = f'''
                 insert into register_product (
                     id,
                     name,
@@ -432,18 +434,19 @@ class data_import():
                 values (
                     {table['id'][i]},
                     '{table['name'][i]}',
-                    {table['stock'][i]},
-                    {table['cost'][i]},
-                    {table['brand_id'][i]},
-                    {table['measure_id'][i]},
-                    {table['price'][i]},
+                    {0 if math.isnan(table['stock'][i]) else table['stock'][i]},
+                    {0 if math.isnan(table['cost'][i]) else table['cost'][i]},
+                    {'null' if math.isnan(table['brand_id'][i]) else table['brand_id'][i]},
+                    {'null' if math.isnan(table['measure_id'][i]) else table['measure_id'][i]},
+                    {0 if math.isnan(table['price'][i]) else table['price'][i]},
                     {table['type'][i]},
                     {table['company_id'][i]},
                     {table['company_worker_id'][i]},
                     '{table['created'][i]}',
                     '{table['updated'][i]}'
                 )
-                ''')
+                '''
+                cur.execute(sql_insert)
                 conn.commit()
                 conn.close()
             except:
@@ -451,19 +454,19 @@ class data_import():
                 cur = conn.cursor()
                 cur.execute(f'''
                 update register_product set
-                    {table['id'][i]},
-                    '{table['name'][i]}',
-                    {table['stock'][i]},
-                    {table['cost'][i]},
-                    {table['brand_id'][i]},
-                    {table['measure_id'][i]},
-                    {table['price'][i]},
-                    {table['type'][i]},
-                    {table['company_id'][i]},
-                    {table['company_worker_id'][i]},
-                    '{table['created'][i]}',
-                    '{table['updated'][i]}'
-                )
+                    name = '{table['name'][i]}',
+                    stock = {0 if math.isnan(table['stock'][i]) else table['stock'][i]},
+                    cost = {0 if math.isnan(table['cost'][i]) else table['cost'][i]},
+                    brand_id = {'null' if math.isnan(table['brand_id'][i]) else table['brand_id'][i]},
+                    measure_id = {'null' if math.isnan(table['measure_id'][i]) else table['measure_id'][i]},
+                    price = {0 if math.isnan(table['price'][i]) else table['price'][i]},
+                    type = {table['type'][i]},
+                    company_id = {table['company_id'][i]},
+                    company_worker_id = {table['company_worker_id'][i]},
+                    created = '{table['created'][i]}',
+                    updated = '{table['updated'][i]}'
+                where 
+                    id = {table['id'][i]}
                 ''')
                 conn.commit()
                 conn.close()
@@ -484,7 +487,7 @@ class data_import():
                 insert into register_productitems (
                     id,
                     product_id,
-                    productitem_id,
+                    product_item_id,
                     quantity,
                     company_id,
                     company_worker_id,
@@ -494,7 +497,7 @@ class data_import():
                 values (
                     {table['id'][i]},
                     {table['product_id'][i]},
-                    {table['productitem_id'][i]},
+                    {table['product_item_id'][i]},
                     {table['quantity'][i]},
                     {table['company_id'][i]},
                     {table['company_worker_id'][i]},
@@ -510,7 +513,7 @@ class data_import():
                 cur.execute(f'''
                 update register_productitems set
                     product_id = {table['product_id'][i]},
-                    productitem_id = {table['productitem_id'][i]},
+                    product_item_id = {table['product_item_id'][i]},
                     quantity = {table['quantity'][i]},
                     company_id = {table['company_id'][i]},
                     company_worker_id = {table['company_worker_id'][i]},
@@ -521,71 +524,106 @@ class data_import():
                 ''')
                 conn.commit()
                 conn.close()
+            i += 1
 
     def sale(self):
         table = pd.read_excel("exports/sale.xlsx")
         i = 0
         while i < len(table['id']):
-            conn = self.con()
-            cur = conn.cursor()
-            cur.execute(f'''
-            insert into register_saleitems (
-                id,
-                delivery,
-                value,
-                total,
-                company_id,
-                company_worker_id,
-                created,
-                updated
-            )
-            values (
-                {table['id'][i]},
-                {table['delivery'][i]},
-                {table['value'][i]},
-                {table['total'][i]},
-                {table['company_id'][i]},
-                {table['company_worker_id'][i]},
-                '{table['created'][i]}',
-                '{table['updated'][i]}'
-            )
-            ''')
-            conn.commit()
-            conn.close()
+            try:
+                conn = self.con()
+                cur = conn.cursor()
+                cur.execute(f'''
+                insert into sale_sale (
+                    delivery,
+                    value,
+                    total,
+                    company_id,
+                    company_worker_id,
+                    created,
+                    updated
+                )
+                values (
+                    {table['id'][i]},
+                    {table['delivery'][i]},
+                    {table['value'][i]},
+                    {table['total'][i]},
+                    {table['company_id'][i]},
+                    {table['company_worker_id'][i]},
+                    '{table['created'][i]}',
+                    '{table['updated'][i]}'
+                )
+                ''')                
+                conn.commit()
+                conn.close()
+            except:
+                conn = self.con()
+                cur = conn.cursor()
+                cur.execute(f'''
+                update sale_sale set
+                    delivery = {table['delivery'][i]},
+                    value = {table['value'][i]},
+                    total = {table['total'][i]},
+                    company_id = {table['company_id'][i]},
+                    company_worker_id = {table['company_worker_id'][i]},
+                    created = '{table['created'][i]}',
+                    updated = '{table['updated'][i]}'
+                where
+                    id = {table['id'][i]}
+                ''')
+                conn.commit()
+                conn.close()
             i+=1
 
     def saleitems(self):
         table = pd.read_excel("exports/saleitems.xlsx")
         i = 0
         while i < len(table['id']):
-            conn = self.con()
-            cur = conn.cursor()
-            cur.execute(f'''
-            insert into register_saleitems (
-                id,
-                sale_id,
-                product_id,
-                quantity,
-                price,
-                company_id,
-                company_worker_id,
-                created,
-                updated
-            )
-            values (
-                {table['id'][i]},
-                {table['sale_id'][i]},
-                {table['product_id'][i]},
-                {table['quantity'][i]},
-                {table['price'][i]},
-                {table['company_id'][i]},
-                {table['company_worker_id'][i]},
-                '{table['created'][i]}',
-                '{table['updated'][i]}'
-            )
-            ''')
-            conn.commit()
-            conn.close()
+            try:
+                conn = self.con()
+                cur = conn.cursor()
+                cur.execute(f'''
+                insert into sale_saleitems (
+                    sale_id,
+                    product_id,
+                    quantity,
+                    price,
+                    company_id,
+                    company_worker_id,
+                    created,
+                    updated
+                )
+                values (
+                    {table['sale_id'][i]},
+                    {table['product_id'][i]},
+                    {table['quantity'][i]},
+                    {table['price'][i]},
+                    {table['company_id'][i]},
+                    {table['company_worker_id'][i]},
+                    '{table['created'][i]}',
+                    '{table['updated'][i]}'
+                )
+                ''')       
+                conn.commit()
+                conn.close()
+            except:
+                conn = self.con()
+                cur = conn.cursor()
+                cur.execute(f'''
+                update sale_saleitems set
+                    sale_id = {table['sale_id'][i]},
+                    product_id = {table['product_id'][i]},
+                    quantity = {table['quantity'][i]},
+                    price = {table['price'][i]},
+                    company_id = {table['company_id'][i]},
+                    company_worker_id = {table['company_worker_id'][i]},
+                    created = '{table['created'][i]}',
+                    updated = '{table['updated'][i]}'
+                where
+                    id = {table['id'][i]}
+                ''')
+                conn.commit()
+                conn.close()
             i+=1
 
 
@@ -600,5 +638,7 @@ if __name__ == '__main__':
     data_import().newregister()
     data_import().productbrand()
     data_import().productmeasure()
+    data_import().product()
+    data_import().productitems()
     data_import().sale() 
     data_import().saleitems() 
