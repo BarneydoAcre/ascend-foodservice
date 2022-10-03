@@ -36,7 +36,7 @@ class data_import():
                 values (
                     {table['id'][i]},
                     '{table['password'][i]}',
-                    '{table['last_login'][i]}',
+                    '2022-09-28 16:53:00.963092+00:00',
                     {str(table['is_superuser'][i]).lower()},
                     '{table['username'][i]}',
                     '{table['first_name'][i]}',
@@ -56,7 +56,7 @@ class data_import():
                 update auth_user set
                     id = {table['id'][i]},
                     password = '{table['password'][i]}',
-                    last_login = '{table['last_login'][i]}',
+                    last_login = '2022-09-28 16:53:00.963092+00:00',
                     is_superuser = {str(table['is_superuser'][i]).lower()},
                     username = '{table['username'][i]}',
                     first_name = '{table['first_name'][i]}',
