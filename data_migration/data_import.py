@@ -535,6 +535,7 @@ class data_import():
                 cur = conn.cursor()
                 cur.execute(f'''
                 insert into sale_sale (
+                    id,
                     delivery,
                     value,
                     total,
