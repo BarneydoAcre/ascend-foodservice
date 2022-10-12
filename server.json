@@ -1,6 +1,6 @@
 {
     "apps": [{
-        "name": "helpdesk",
+        "name": "foodservice",
         "script": "manage.py",
         "args": ["runserver", "0.0.0.0:80","--insecure"],
         "exec_mode": "fork",

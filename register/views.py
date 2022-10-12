@@ -35,13 +35,43 @@ def addProduct(request):
 def editProduct(request):
     if request.method == "POST":
         body = json.loads(request.body)
-        print(body)
         if body["type"] == 2:
             prod = models.Product.objects.filter(company= body["company"], id=body["id"])
             if prod[0].name != body["name"]:
                 prod.update(name=body["name"])
             if prod[0].price != body["price"]:
                 prod.update(price=body["price"])    
+            return HttpResponse(status=200, headers={'content-type': 'application/json'})
+        return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
+    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+
+@csrf_exempt
+def deleteProduct(request):
+    if request.method == "POST":
+        body = json.loads(request.body)
+        if int(body["type"]) == 1:
+            model = models.Product.objects.filter(company= body["company"], id=body["id"])
+            if len(model) > 0:
+                return HttpResponse(status=201, headers={'content-type': 'application/json'})
+            else:
+                model.delete()
+                return HttpResponse(status=200, headers={'content-type': 'application/json'})
+        return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
+    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+
+@csrf_exempt
+def deleteProductSale(request):
+    if request.method == "POST":
+        body = json.loads(request.body)
+        if int(body["type"]) == 2:
+            modelitem = models.ProductItems.objects.filter(company= body["company"], product= body["product"])
+            model = models.Product.objects.filter(company= body["company"], id= body["product"])
+            for m in modelitem:
+                m.delete()
+            model.delete()
+            return HttpResponse(status=200, headers={'content-type': 'application/json'})
+        elif int(body["type"]) == 1:
+            models.ProductItems.objects.filter(company= body["company"], product= body["product"], product_item= body["product_item"]).delete() 
             return HttpResponse(status=200, headers={'content-type': 'application/json'})
         return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
     return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
@@ -65,6 +95,7 @@ def getProduct(request):
                     'stock': str(m.stock),
                     'cost': str(round(m.cost,2)),
                     'price': str(m.price),
+                    'type': str(m.type)
                 })
             return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
         return HttpResponse("Access Unautorized", status=402, headers={'content-type': 'application/json'})
@@ -93,6 +124,7 @@ def getProductCost(id, company):
 def addProductItems(request):
     if request.method == "POST":
         body = json.loads(request.body)
+        print(request.body)
         cost = 0
         for i in body["items"]:
             form = forms.AddProductItemsForm({
@@ -114,7 +146,6 @@ def addProductItem(request):
     if request.method == "POST":
         body = json.loads(request.body)
         form = forms.AddProductItemsForm(body)
-        print(form.is_valid())
         if form.is_valid():
             models.Product.objects.filter(company=body["company"], id=body["product_sale"]).update()
         return HttpResponse(status=200, headers={'content-type': 'application/json'})
@@ -133,6 +164,8 @@ def getProductItems(request):
             for m in model:
                 data.append({
                     'id': str(m.id),
+                    'prod': str(m.product.id),
+                    'prod_item': str(m.product_item.id),
                     'name': str(m.product_item.name),
                     'measure': str(m.product_item.measure),
                     'quantity': str(m.quantity),

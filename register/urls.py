@@ -1,12 +1,14 @@
 from django.urls import path, include
 from . import views
 
-app_name = 'foodservice'
+app_name = 'register'
 
 urlpatterns = [
     path('addProduct/', views.addProduct),
     path('getProduct/', views.getProduct),
     path('editProduct/', views.editProduct),
+    path('deleteProduct/', views.deleteProduct),
+    path('deleteProductSale/', views.deleteProductSale),
     path('addProductItems/', views.addProductItems),
     path('addProductItem/', views.addProductItem),
     path('getProductItems/', views.getProductItems),
