@@ -50,6 +50,42 @@ def addSaleItems(request):
         return HttpResponse(status=200, headers={'content-type': 'application/json'})
     return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
 
+def getSale(request):
+    if request.method == 'GET':
+        get = request.GET
+        if verifyLogin(get["token"]):
+            data = []
+            model = models.Sale.objects.all()
+            for m in model:
+                data.append({
+                    "id": m.id,
+                    "value": m.value,
+                    "delivery": m.delivery,
+                    "date": str(m.created),
+                })
+            return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
+        return HttpResponse("Invalid Login", status=400, headers={'content-type': 'application/json'})
+    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+
+def getSaleItems(request):
+    if request.method == 'GET':
+        get = request.GET
+        if verifyLogin(get["token"]):
+            data = []
+            model = models.SaleItems.objects.all()
+            for m in model:
+                data.append({
+                    "id": m.id,
+                    "sale": m.sale.id,
+                    "product_id": m.product.id,
+                    "product_name": m.product.name,
+                    "price": m.price,
+                    "quantity": m.quantity
+                })
+            return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
+        return HttpResponse("Invalid Login", status=400, headers={'content-type': 'application/json'})
+    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+
 @csrf_exempt
 def printPDF(request, id):
     import io
