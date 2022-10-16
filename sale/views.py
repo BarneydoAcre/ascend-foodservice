@@ -55,13 +55,13 @@ def getSale(request):
         get = request.GET
         if verifyLogin(get["token"]):
             data = []
-            model = models.Sale.objects.all()
+            model = models.Sale.objects.filter(company=get["company"]).order_by('-id')
             for m in model:
                 data.append({
                     "id": m.id,
                     "value": m.value,
                     "delivery": m.delivery,
-                    "date": str(m.created),
+                    "date": str(m.created).split(' ')[0],
                 })
             return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
         return HttpResponse("Invalid Login", status=400, headers={'content-type': 'application/json'})
@@ -72,7 +72,7 @@ def getSaleItems(request):
         get = request.GET
         if verifyLogin(get["token"]):
             data = []
-            model = models.SaleItems.objects.all()
+            model = models.SaleItems.objects.filter(company=get["company"]).order_by('-id')
             for m in model:
                 data.append({
                     "id": m.id,
