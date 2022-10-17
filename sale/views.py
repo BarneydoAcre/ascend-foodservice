@@ -56,13 +56,6 @@ def deleteSale(request):
         body = json.loads(request.body)
         if verifyLogin(body["token"]):
             model = models.Sale.objects.filter(company=body["company"],id=body["sale"]).update(canceled=True)
-            modelitems = models.SaleItems.objects.filter(company=body["company"],sale=body["sale"])
-            for m in modelitems:
-                try:
-                    m.delete()
-                except:
-                    return HttpResponse(status=400, headers={'content-type': 'application/json'})
-            model.delete()
             return HttpResponse(status=200, headers={'content-type': 'application/json'})
         return HttpResponse("Invalid login", status=40, headers={'content-type': 'application/json'})
     return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
