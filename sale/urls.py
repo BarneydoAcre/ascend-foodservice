@@ -8,5 +8,6 @@ urlpatterns = [
     path('addSaleItems/', views.addSaleItems),
     path('getSale/', views.getSale),
     path('getSaleItems/', views.getSaleItems),
+    path('deleteSale/', views.deleteSale),
     path('print/<int:id>/', views.printPDF),
 ]

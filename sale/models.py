@@ -10,6 +10,7 @@ class Sale(models.Model):
     company_worker = models.ForeignKey(default.models.CompanyWorker, on_delete=models.PROTECT)
     value = models.FloatField(blank=False)
     delivery = models.FloatField(blank=False, default=0)
+    canceled = models.BooleanField(default=False)
     total = models.FloatField(blank=False, default=0)
     
     created = models.DateTimeField(auto_now_add=True)

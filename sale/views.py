@@ -50,6 +50,23 @@ def addSaleItems(request):
         return HttpResponse(status=200, headers={'content-type': 'application/json'})
     return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
 
+@csrf_exempt
+def deleteSale(request):
+    if request.method == "POST":
+        body = json.loads(request.body)
+        if verifyLogin(body["token"]):
+            model = models.Sale.objects.filter(company=body["company"],id=body["sale"]).update(canceled=True)
+            modelitems = models.SaleItems.objects.filter(company=body["company"],sale=body["sale"])
+            for m in modelitems:
+                try:
+                    m.delete()
+                except:
+                    return HttpResponse(status=400, headers={'content-type': 'application/json'})
+            model.delete()
+            return HttpResponse(status=200, headers={'content-type': 'application/json'})
+        return HttpResponse("Invalid login", status=40, headers={'content-type': 'application/json'})
+    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+
 def getSale(request):
     if request.method == 'GET':
         get = request.GET
