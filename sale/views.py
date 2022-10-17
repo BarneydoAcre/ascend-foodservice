@@ -65,7 +65,7 @@ def getSale(request):
         get = request.GET
         if verifyLogin(get["token"]):
             data = []
-            model = models.Sale.objects.filter(company=get["company"]).order_by('-id')
+            model = models.Sale.objects.filter(company=get["company"], canceled=False).order_by('-id')
             for m in model:
                 data.append({
                     "id": m.id,
