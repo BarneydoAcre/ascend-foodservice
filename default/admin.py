@@ -22,3 +22,15 @@ admin.site.register(models.CompanyPosition, CompanyPositionAdmin)
 class BugReportAdmin(admin.ModelAdmin):
     list_display = ('company', 'company_worker', 'bug',)
 admin.site.register(models.BugReport, BugReportAdmin)
+
+class CountryAdmin(admin.ModelAdmin):
+    list_display = ('cod', 'name',)
+admin.site.register(models.Country, CountryAdmin)
+
+class StateAdmin(admin.ModelAdmin):
+    list_display = ('cod', 'name',)
+admin.site.register(models.State, StateAdmin)
+
+class CityAdmin(admin.ModelAdmin):
+    list_display = ('cod', 'name',)
+admin.site.register(models.City, CityAdmin)

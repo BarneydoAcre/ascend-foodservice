@@ -82,10 +82,30 @@ class Country(models.Model):
     cod = models.CharField(max_length=15, blank=False)
     name = models.CharField(max_length=30, blank=False)
 
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name, verbose_name_plural = "Country", "Countries"
+        ordering = ("created",)
+
 
 class State(models.Model):
     cod = models.CharField(max_length=15, blank=False)
     name = models.CharField(max_length=30, blank=False)
+
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name, verbose_name_plural = "State", "States"
+        ordering = ("created",)
 
 
 class City(models.Model):
@@ -94,3 +114,13 @@ class City(models.Model):
     cep = models.CharField(max_length=10, blank=False)
     state = models.ForeignKey(State, blank=False, on_delete=models.PROTECT)
     country = models.ForeignKey(Country, blank=False, on_delete=models.PROTECT)
+    
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name, verbose_name_plural = "City", "Cities"
+        ordering = ("created",)
