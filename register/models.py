@@ -75,6 +75,19 @@ class ProductItems(models.Model):
         verbose_name, verbose_name_plural = "Produto Item", "Produto Items"
         ordering = ("product",)
 
+class Customer(models.Model):
+    first_name = models.CharField(max_length=50, blank=False, default="")
+    last_name = models.CharField(max_length=50, blank=False, default="")
+    cpf = models.CharField(max_length=20, blank=False, default="")
+    cnpj = models.CharField(max_length=20, blank=False, default="")
+    phone_number = models.CharField(max_length=20, blank=False, default="")
+    email = models.CharField(max_length=60, blank=False, default="")
+    cep = models.CharField(max_length=20, blank=False, default="")
+    street = models.CharField(max_length=50, blank=False, default="")
+    district = models.CharField(max_length=50, blank=False, default="")
+    city = models.ForeignKey(default.models.City, blank=True, on_delete=models.PROTECT)
+    num = models.CharField(max_length=20, blank=False, default="")
+
 class Groups(models.Model):
     name = models.CharField(max_length=15, default='')
 

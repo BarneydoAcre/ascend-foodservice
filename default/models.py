@@ -77,3 +77,20 @@ class BugReport(models.Model):
     class Meta:
         verbose_name, verbose_name_plural = "Bug Report", "Bug Reports"
         ordering = ("created",)
+
+class Country(models.Model):
+    cod = models.CharField(max_length=15, blank=False)
+    name = models.CharField(max_length=30, blank=False)
+
+
+class State(models.Model):
+    cod = models.CharField(max_length=15, blank=False)
+    name = models.CharField(max_length=30, blank=False)
+
+
+class City(models.Model):
+    cod = models.CharField(max_length=15, blank=False)
+    name = models.CharField(max_length=30, blank=False)
+    cep = models.CharField(max_length=10, blank=False)
+    state = models.ForeignKey(State, blank=False, on_delete=models.PROTECT)
+    country = models.ForeignKey(Country, blank=False, on_delete=models.PROTECT)
