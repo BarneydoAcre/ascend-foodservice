@@ -96,6 +96,7 @@ class Country(models.Model):
 class State(models.Model):
     cod = models.CharField(max_length=15, blank=False)
     name = models.CharField(max_length=30, blank=False)
+    country = models.ForeignKey(Country, blank=False, on_delete=models.PROTECT)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

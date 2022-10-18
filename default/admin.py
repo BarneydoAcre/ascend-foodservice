@@ -32,5 +32,5 @@ class StateAdmin(admin.ModelAdmin):
 admin.site.register(models.State, StateAdmin)
 
 class CityAdmin(admin.ModelAdmin):
-    list_display = ('cod', 'name',)
+    list_display = ('name', 'state', 'country',)
 admin.site.register(models.City, CityAdmin)
