@@ -88,7 +88,6 @@ class Partner(models.Model):
     company = models.ForeignKey(default.models.Company, on_delete=models.PROTECT)
     person_f_j = models.IntegerField(choices=f_j, blank=False)
     person_type = models.IntegerField(choices=type, blank=False)
-    name = models.CharField(max_length=80, blank=False, default="")
     corporate_name = models.CharField(max_length=80, blank=False, default="")
     fantasy_name = models.CharField(max_length=80, blank=False, default="")
     cpf = models.CharField(max_length=20, blank=False, default="")
@@ -101,6 +100,17 @@ class Partner(models.Model):
     district = models.CharField(max_length=50, blank=False, default="")
     city = models.ForeignKey(default.models.City, blank=True, on_delete=models.PROTECT)
     num = models.CharField(max_length=20, blank=False, default="")
+    
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.corporate_name)
+
+    class Meta:
+        verbose_name, verbose_name_plural = "Parceira", "Parcerias"
+        ordering = ("company", "corporate_name",)
+
 
 class Groups(models.Model):
     name = models.CharField(max_length=15, default='')
