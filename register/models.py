@@ -85,6 +85,7 @@ class Partner(models.Model):
         (2, "Cliente",),
         (3, "Fornecedor",),
     )
+    company = models.ForeignKey(default.models.Company, on_delete=models.PROTECT)
     person_f_j = models.IntegerField(choices=f_j, blank=False)
     person_type = models.IntegerField(choices=type, blank=False)
     name = models.CharField(max_length=80, blank=False, default="")
