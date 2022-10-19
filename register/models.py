@@ -75,11 +75,24 @@ class ProductItems(models.Model):
         verbose_name, verbose_name_plural = "Produto Item", "Produto Items"
         ordering = ("product",)
 
-class Customer(models.Model):
-    first_name = models.CharField(max_length=50, blank=False, default="")
-    last_name = models.CharField(max_length=50, blank=False, default="")
+class Partner(models.Model):
+    f_j = (
+        (1, "Física",),
+        (2, "Jurídica",),
+    )
+    type = (
+        (1, "Transportador",),
+        (2, "Cliente",),
+        (3, "Fornecedor",),
+    )
+    person_f_j = models.IntegerField(choices=f_j, blank=False)
+    person_type = models.IntegerField(choices=type, blank=False)
+    name = models.CharField(max_length=80, blank=False, default="")
+    corporate_name = models.CharField(max_length=80, blank=False, default="")
+    fantasy_name = models.CharField(max_length=80, blank=False, default="")
     cpf = models.CharField(max_length=20, blank=False, default="")
     cnpj = models.CharField(max_length=20, blank=False, default="")
+    ie = models.CharField(max_length=20, blank=False, default="")
     phone_number = models.CharField(max_length=20, blank=False, default="")
     email = models.CharField(max_length=60, blank=False, default="")
     cep = models.CharField(max_length=20, blank=False, default="")
