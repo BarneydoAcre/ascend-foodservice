@@ -18,5 +18,5 @@ class ProductBrandAdmin(admin.ModelAdmin):
 admin.site.register(models.ProductBrand, ProductBrandAdmin)
 
 class PartnerAdmin(admin.ModelAdmin):
-    list_display = ("company", "corporate_name", "fantasy_name",)
+    list_display = ("company", "name", "fantasy_name",)
 admin.site.register(models.Partner, PartnerAdmin)

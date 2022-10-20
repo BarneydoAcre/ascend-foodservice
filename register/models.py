@@ -88,8 +88,8 @@ class Partner(models.Model):
     company = models.ForeignKey(default.models.Company, on_delete=models.PROTECT)
     person_f_j = models.IntegerField(choices=f_j, blank=False)
     person_type = models.IntegerField(choices=type, blank=False)
-    corporate_name = models.CharField(max_length=80, blank=True, default="")
-    fantasy_name = models.CharField(max_length=80, blank=True, default="")
+    name = models.CharField(max_length=80, blank=True, default="")
+    fantasy_name = models.CharField(max_length=80, null=False, default="")
     cpf = models.CharField(max_length=20, blank=False, default="")
     cnpj = models.CharField(max_length=20, blank=False, default="")
     ie = models.CharField(max_length=20, blank=False, default="")
@@ -108,8 +108,8 @@ class Partner(models.Model):
         return str(self.corporate_name)
 
     class Meta:
-        verbose_name, verbose_name_plural = "Parceira", "Parcerias"
-        ordering = ("company", "corporate_name",)
+        verbose_name, verbose_name_plural = "Parceria", "Parcerias"
+        ordering = ("company", "name",)
 
 
 class Groups(models.Model):
