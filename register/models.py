@@ -81,32 +81,32 @@ class Partner(models.Model):
         (2, "Jurídica",),
     )
     type = (
-        (1, "Transportador",),
-        (2, "Cliente",),
-        (3, "Fornecedor",),
+        (1, "Cliente",),
+        (2, "Fornecedor",),
+        (3, "Transportador",),
     )
-    company = models.ForeignKey(default.models.Company, on_delete=models.PROTECT)
-    company_worker = models.ForeignKey(default.models.CompanyWorker, on_delete=models.PROTECT)
-    person_f_j = models.IntegerField(choices=f_j, blank=False)
-    person_type = models.IntegerField(choices=type, blank=False)
+    company = models.ForeignKey(default.models.Company, blank=False, on_delete=models.PROTECT, default="1")
+    company_worker = models.ForeignKey(default.models.CompanyWorker, blank=False, on_delete=models.PROTECT, default="1")
+    person_f_j = models.IntegerField(choices=f_j, blank=False, default="1")
+    person_type = models.IntegerField(choices=type, blank=False, default="1")
     name = models.CharField(max_length=80, blank=True, default="")
-    fantasy_name = models.CharField(max_length=80, null=False, default="")
-    cpf = models.CharField(max_length=20, blank=False, default="")
-    cnpj = models.CharField(max_length=20, blank=False, default="")
-    ie = models.CharField(max_length=20, blank=False, default="")
-    phone_number = models.CharField(max_length=20, blank=False, default="")
-    email = models.CharField(max_length=60, blank=False, default="")
+    fantasy_name = models.CharField(max_length=80, blank=True, null=True, default="")
+    cpf = models.CharField(max_length=20, blank=True, null=True, default="")
+    cnpj = models.CharField(max_length=20, blank=True, null=True, default="")
+    ie = models.CharField(max_length=20, blank=True, null=True, default="")
+    phone_number = models.CharField(max_length=20, blank=True, null=True, default="")
+    email = models.CharField(max_length=60, blank=True, null=True, default="")
     cep = models.CharField(max_length=20, blank=False, default="")
     street = models.CharField(max_length=50, blank=False, default="")
     district = models.CharField(max_length=50, blank=False, default="")
-    city = models.ForeignKey(default.models.City, blank=True, on_delete=models.PROTECT)
+    city = models.ForeignKey(default.models.City, blank=False, on_delete=models.PROTECT, default="1")
     num = models.CharField(max_length=20, blank=False, default="")
     
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.corporate_name)
+        return str(self.name)
 
     class Meta:
         verbose_name, verbose_name_plural = "Parceria", "Parcerias"
