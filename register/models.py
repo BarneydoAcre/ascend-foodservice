@@ -83,7 +83,7 @@ class Partner(models.Model):
     type_provider = models.BooleanField(blank=False, default=False)
     type_conveyor = models.BooleanField(blank=False, default=False)
     name = models.CharField(max_length=80, blank=True, default="")
-    fantasy_name = models.CharField(max_length=80, blank=True, null=True, default="")
+    fantasy = models.CharField(max_length=80, blank=True, null=True, default="")
     cpf = models.CharField(max_length=20, blank=True, null=True, default="")
     cnpj = models.CharField(max_length=20, blank=True, null=True, default="")
     ie = models.CharField(max_length=20, blank=True, null=True, default="")
