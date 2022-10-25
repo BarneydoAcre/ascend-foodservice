@@ -56,3 +56,27 @@ class AddProductItemsForm(forms.ModelForm):
             "product_item",
             "quantity",
         ]
+
+class AddPartnerForm(forms.ModelForm):
+    class Meta: 
+        model = models.Partner
+        fields = [
+            "company",
+            "company_worker",
+            "person_f_j",
+            "type_client",
+            "type_provider",
+            "type_conveyor",
+            "name",
+            "fantasy_name",
+            "cpf",
+            "cnpj",
+            "ie",
+            "phone_number",
+            "email",
+            "cep",
+            "street",
+            "district",
+            "city",
+            "num",
+        ]

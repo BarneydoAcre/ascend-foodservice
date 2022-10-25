@@ -53,5 +53,12 @@ $ }
 $ py manage.py runserver
 
 # build for production and launch server
-$ py manage.py 0.0.0.0:8000 --insecure
+$ py manage.py 0.0.0.0:80
+
+# configuration for HTTP STATUS
+403 - NOT A POST
+402 - TOKEN INVALID
+401 - INTERNAL ERROR
+200 - OK
 ```
+

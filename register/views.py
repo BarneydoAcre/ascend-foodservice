@@ -22,14 +22,14 @@ def addProduct(request):
             if form.is_valid():
                 form.save()
                 return HttpResponse(status=200, headers={'content-type': 'application/json'})
-            return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
+            return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
         elif body["type"] == 2:
             form = forms.AddProductSaleForm(body)
             if form.is_valid():
                 last_id = form.save()
                 return HttpResponse(last_id.id, status=200, headers={'content-type': 'application/json'})
-            return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+            return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
 @csrf_exempt
 def editProduct(request):
@@ -42,8 +42,8 @@ def editProduct(request):
             if prod[0].price != body["price"]:
                 prod.update(price=body["price"])    
             return HttpResponse(status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
 @csrf_exempt
 def deleteProduct(request):
@@ -56,8 +56,8 @@ def deleteProduct(request):
             else:
                 model.delete()
                 return HttpResponse(status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
 @csrf_exempt
 def deleteProductSale(request):
@@ -73,8 +73,8 @@ def deleteProductSale(request):
         elif int(body["type"]) == 1:
             models.ProductItems.objects.filter(company= body["company"], product= body["product"], product_item= body["product_item"]).delete() 
             return HttpResponse(status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
 def getProduct(request):
     if request.method == "GET":
@@ -98,7 +98,7 @@ def getProduct(request):
                     'type': str(m.type)
                 })
             return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Access Unautorized", status=402, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
 def getProductCost(id, company):
     model = models.ProductItems.objects.filter(company=company, product=id)
@@ -139,7 +139,7 @@ def addProductItems(request):
             cost += getProductCost(body["product_sale"], body["company"])
         models.Product.objects.filter(company=body["company"], id=body["product_sale"]).update(cost=cost)
         return HttpResponse(status=200, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
 @csrf_exempt
 def addProductItem(request):
@@ -149,7 +149,7 @@ def addProductItem(request):
         if form.is_valid():
             models.Product.objects.filter(company=body["company"], id=body["product_sale"]).update()
         return HttpResponse(status=200, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
 def getProductItems(request):
     if request.method == "GET":
@@ -173,7 +173,7 @@ def getProductItems(request):
                     'price': str(m.product_item.price),
                 })
             return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Access Unautorized", status=402, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
 @csrf_exempt
 def addBrand(request):
@@ -183,8 +183,8 @@ def addBrand(request):
         if form.is_valid():
             form.save()
             return HttpResponse(status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
 def getBrand(request):
     if request.method == "GET":
@@ -211,8 +211,8 @@ def addMeasure(request):
         if form.is_valid():
             form.save()
             return HttpResponse(status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
 def getMeasure(request):
     if request.method == "GET":
@@ -229,7 +229,7 @@ def getMeasure(request):
                     'measure_name': m.measure,
                 })
             return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
-        return HttpResponse(status=401, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
 
 @csrf_exempt
 def addProductStock(request):
@@ -245,5 +245,20 @@ def addProductStock(request):
             else:
                 model.update(stock=round(base,2),cost=(mod+front)/base) 
         return HttpResponse(status=200, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
+
+@csrf_exempt
+def addPartner(request):
+    if request.method == "POST":
+        body = json.loads(request.body)
+        if verifyLogin(body["token"]):
+            form = forms.AddPartnerForm(body)
+            print(form.is_valid())
+            if form.is_valid():
+                print(form.is_valid())
+            return HttpResponse(status=200, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=403, headers={'content-type': 'application/json'})
+
+
 

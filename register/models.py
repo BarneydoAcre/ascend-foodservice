@@ -80,15 +80,12 @@ class Partner(models.Model):
         (1, "Física",),
         (2, "Jurídica",),
     )
-    type = (
-        (1, "Cliente",),
-        (2, "Fornecedor",),
-        (3, "Transportador",),
-    )
     company = models.ForeignKey(default.models.Company, blank=False, on_delete=models.PROTECT, default="1")
     company_worker = models.ForeignKey(default.models.CompanyWorker, blank=False, on_delete=models.PROTECT, default="1")
     person_f_j = models.IntegerField(choices=f_j, blank=False, default="1")
-    person_type = models.IntegerField(choices=type, blank=False, default="1")
+    type_client = models.BooleanField(blank=False, default=False)
+    type_provider = models.BooleanField(blank=False, default=False)
+    type_conveyor = models.BooleanField(blank=False, default=False)
     name = models.CharField(max_length=80, blank=True, default="")
     fantasy_name = models.CharField(max_length=80, blank=True, null=True, default="")
     cpf = models.CharField(max_length=20, blank=True, null=True, default="")
