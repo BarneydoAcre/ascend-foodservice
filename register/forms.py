@@ -67,11 +67,6 @@ class AddPartnerForm(forms.ModelForm):
             "type_client",
             "type_provider",
             "type_conveyor",
-            "name",
-            "fantasy_name",
-            "cpf",
-            "cnpj",
-            "ie",
             "phone_number",
             "email",
             "cep",
@@ -79,4 +74,11 @@ class AddPartnerForm(forms.ModelForm):
             "district",
             "city",
             "num",
+        ]
+        exclude = [
+            "name",
+            "fantasy_name",
+            "cpf",
+            "cnpj",
+            "ie",
         ]

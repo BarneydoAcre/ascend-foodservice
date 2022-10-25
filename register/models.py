@@ -76,13 +76,9 @@ class ProductItems(models.Model):
         ordering = ("product",)
 
 class Partner(models.Model):
-    f_j = (
-        (1, "Física",),
-        (2, "Jurídica",),
-    )
     company = models.ForeignKey(default.models.Company, blank=False, on_delete=models.PROTECT, default="1")
     company_worker = models.ForeignKey(default.models.CompanyWorker, blank=False, on_delete=models.PROTECT, default="1")
-    person_f_j = models.IntegerField(choices=f_j, blank=False, default="1")
+    person_f_j = models.BooleanField(blank=False, default=False)
     type_client = models.BooleanField(blank=False, default=False)
     type_provider = models.BooleanField(blank=False, default=False)
     type_conveyor = models.BooleanField(blank=False, default=False)

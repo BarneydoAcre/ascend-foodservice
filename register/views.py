@@ -252,7 +252,54 @@ def addPartner(request):
     if request.method == "POST":
         body = json.loads(request.body)
         if verifyLogin(body["token"]):
-            form = forms.AddPartnerForm(body)
+            # form = forms.AddPartnerForm(body)
+            test1 = {
+                "company": body["company"],
+                "company_worker": body["company_worker"],
+                "person_f_j": body["person_f_j"],
+                "type_client": body["type_client"],
+                "type_provider": body["type_provider"],
+                "type_conveyor": body["type_conveyor"],
+                "phone_number": body["phone_number"],
+                "email": body["email"],
+                "cep": body["cep"],
+                "street": body["street"],
+                "district": body["district"],
+                "city": body["city"],
+                "num": body["num"],
+            }
+            test2 = {
+                "company": int(body["company"]),
+                "company_worker": int(body["company_worker"]),
+                "person_f_j": int(body["person_f_j"]),
+                "type_client": body["type_client"],
+                "type_provider": body["type_provider"],
+                "type_conveyor": body["type_conveyor"],
+                "phone_number": body["phone_number"],
+                "email": body["email"],
+                "cep": body["cep"],
+                "street": body["street"],
+                "district": body["district"],
+                "city": int(body["city"]),
+                "num": body["num"],
+            }
+            test3 = {
+                "company": 1,
+                "company_worker": 1,
+                "person_f_j": 1,
+                "type_client": True,
+                "type_provider": False,
+                "type_conveyor": False,
+                "phone_number": '67998316369',
+                "email": 'gabrielfauth@outlook.com',
+                "cep": '79823620',
+                "street": 'takeo takimoto',
+                "district": 'altos do indaiá',
+                "city": 1,
+                "num": '135',
+            }
+            print(test2)
+            form = forms.AddPartnerForm(test2)
             print(form.is_valid())
             if form.is_valid():
                 print(form.is_valid())
