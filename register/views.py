@@ -174,6 +174,7 @@ def getProductItems(request):
                 })
             return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
         return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=403, headers={'content-type': 'application/json'})
 
 @csrf_exempt
 def addBrand(request):

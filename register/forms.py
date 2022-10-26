@@ -68,7 +68,7 @@ class AddPartnerForm(forms.ModelForm):
             "type_provider",
             "type_conveyor",
             "name",
-            "fantasy_name",
+            "fantasy",
             "cpf",
             "cnpj",
             "ie",

@@ -69,6 +69,26 @@ def getCompany(request):
         return HttpResponse(json.dumps(comp), status=200, headers={'content-type': 'application/json'})
     else:
         return HttpResponse("Cannot find your key!", status=401, headers={'content-type': 'application/json'})
+   
+def getCities(request):
+    if request.method == "GET":
+        try:
+            get = dict(request.GET)
+        except MultiValueDictKeyError:
+            get = []
+            return HttpResponse("Invalid data!", status=401, headers={'content-type': 'application/json'})
+        
+        if verifyLogin(get['token'][0]) == 200:
+            model = models.City.objects.all()
+            cities = []
+            for m in model:
+                cities.append({
+                    'id': str(m.id),
+                    'name': str(m.name),
+                })
+            return HttpResponse(json.dumps(cities), status=200, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation!", status=401, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation!", status=402, headers={'content-type': 'application/json'})
 
 @csrf_exempt
 def addBugReport(request):
