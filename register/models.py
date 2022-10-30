@@ -86,6 +86,7 @@ class Partner(models.Model):
     fantasy = models.CharField(max_length=80, blank=True, null=True, default="")
     cpf = models.CharField(max_length=20, blank=True, null=True, default="")
     cnpj = models.CharField(max_length=20, blank=True, null=True, default="")
+    rg = models.CharField(max_length=20, blank=True, null=True, default="")
     ie = models.CharField(max_length=20, blank=True, null=True, default="")
     phone_number = models.CharField(max_length=20, blank=True, null=True, default="")
     email = models.CharField(max_length=60, blank=True, null=True, default="")

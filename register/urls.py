@@ -18,4 +18,5 @@ urlpatterns = [
     path('getMeasure/', views.getMeasure),
     path('addProductStock/', views.addProductStock),
     path('addPartner/', views.addPartner),
+    path('getPartner/', views.getPartner),
 ]

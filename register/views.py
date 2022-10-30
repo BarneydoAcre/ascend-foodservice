@@ -254,12 +254,45 @@ def addPartner(request):
         body = json.loads(request.body)
         if verifyLogin(body["token"]):
             form = forms.AddPartnerForm(body)
+            print(body)
             if form.is_valid():
                 form.save()
                 return HttpResponse(status=200, headers={'content-type': 'application/json'})
             return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
         return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
     return HttpResponse("Access violation", status=403, headers={'content-type': 'application/json'})
+
+def getPartner(request):
+    if request.method == "GET":
+        try:
+            get = dict(request.GET)
+        except MultiValueDictKeyError:
+            get = []
+            return HttpResponse("Invalid data!", status=401, headers={'content-type': 'application/json'})
+
+        if verifyLogin(get['token']) == 200:
+            data = []
+            for m in models.Partner.objects.filter(company=get['company'][0]):
+                data.append({
+                    'id': str(m.id),
+                    'person_f_j': m.person_f_j,
+                    'type_client': m.type_client,
+                    'type_provider': m.type_provider,
+                    'type_conveyor': m.type_conveyor,
+                    'name': m.name,
+                    'fantasy': m.fantasy,
+                    'cpf_cnpj': m.cpf if m.cpf != None else m.cnpj,
+                    'rg_ie': m.rg if m.rg != None else m.ie,
+                    'phone_number': m.phone_number,
+                    'email': m.email,
+                    'cep': m.cep,
+                    'street': m.street,
+                    'district': m.district,
+                    'city': m.city.id,
+                    'num': m.num,
+                })
+            return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
 
 
 
