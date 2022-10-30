@@ -8,5 +8,6 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
     path('default/', include('default.urls')),
     path('register/', include('register.urls')),
+    # path('api-auth/', include('rest_framework.urls')),
     path('sale/', include('sale.urls')),
 ]

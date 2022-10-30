@@ -1,8 +1,13 @@
 from django.urls import path, include
+# from rest_framework.routers import DefaultRouter
 from . import views
 
 app_name = 'register'
 
+# router = DefaultRouter(trailing_slash=False)
+# router.register(r'partner/', views.PartnerViewSet)
+
+# urlpatterns = router.urls
 urlpatterns = [
     path('addProduct/', views.addProduct),
     path('getProduct/', views.getProduct),
@@ -16,7 +21,8 @@ urlpatterns = [
     path('getBrand/', views.getBrand),
     path('addMeasure/', views.addMeasure),
     path('getMeasure/', views.getMeasure),
-    path('addProductStock/', views.addProductStock),
+    path('addProductStock/', views.addProductStock),   
     path('addPartner/', views.addPartner),
     path('getPartner/', views.getPartner),
+    # path('deletePartner/', views.deletePartner),
 ]

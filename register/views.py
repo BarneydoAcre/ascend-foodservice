@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponse
+from django.core import serializers
 from django.http import FileResponse
+from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.datastructures import MultiValueDictKeyError
 from foodservice.settings import BASE_DIR
@@ -247,9 +249,23 @@ def addProductStock(request):
                 model.update(stock=round(base,2),cost=(mod+front)/base) 
         return HttpResponse(status=200, headers={'content-type': 'application/json'})
     return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
-
+    
 @csrf_exempt
 def addPartner(request):
+    if request.method == "POST":
+        body = json.loads(request.body)
+        if verifyLogin(body["token"]):
+            form = forms.AddPartnerForm(body)
+            print(body)
+            if form.is_valid():
+                form.save()
+                return HttpResponse(status=200, headers={'content-type': 'application/json'})
+            return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=403, headers={'content-type': 'application/json'})
+
+@csrf_exempt
+def deletePartner(request):
     if request.method == "POST":
         body = json.loads(request.body)
         if verifyLogin(body["token"]):
@@ -291,7 +307,7 @@ def getPartner(request):
                     'city': m.city.id,
                     'num': m.num,
                 })
-            return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
+            return HttpResponse(json.dumps(data, indent=3), status=200, headers={'content-type': 'application/json'})
         return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
 
 
