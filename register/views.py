@@ -258,20 +258,6 @@ def addPartner(request):
         return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
     return HttpResponse("Access violation", status=403, headers={'content-type': 'application/json'})
 
-@csrf_exempt
-def deletePartner(request):
-    if request.method == "POST":
-        body = json.loads(request.body)
-        if verifyLogin(body["token"]):
-            form = forms.AddPartnerForm(body)
-            print(body)
-            if form.is_valid():
-                form.save()
-                return HttpResponse(status=200, headers={'content-type': 'application/json'})
-            return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
-        return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
-    return HttpResponse("Access violation", status=403, headers={'content-type': 'application/json'})
-
 def getPartner(request):
     if request.method == "GET":
         try:
@@ -283,6 +269,10 @@ def getPartner(request):
         if verifyLogin(get['token']) == 200:
             data = []
             for m in models.Partner.objects.filter(company=get['company'][0]):
+                try:
+                    city = m.city.id
+                except:
+                    city = ''
                 data.append({
                     'id': str(m.id),
                     'person_f_j': m.person_f_j,
@@ -298,11 +288,39 @@ def getPartner(request):
                     'cep': m.cep,
                     'street': m.street,
                     'district': m.district,
-                    'city': m.city.id,
+                    'city': city,
                     'num': m.num,
                 })
             return HttpResponse(json.dumps(data, indent=3), status=200, headers={'content-type': 'application/json'})
         return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
+
+@csrf_exempt
+def editPartner(request):
+    if request.method == "POST":
+        body = json.loads(request.body)
+        if verifyLogin(body["token"]):
+            form = forms.AddPartnerForm(body)
+            print(body)
+            if form.is_valid():
+                form.save()
+                return HttpResponse(status=200, headers={'content-type': 'application/json'})
+            return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=403, headers={'content-type': 'application/json'})
+
+@csrf_exempt
+def deletePartner(request):
+    if request.method == "POST":
+        body = json.loads(request.body)
+        if verifyLogin(body["token"]):
+            form = forms.AddPartnerForm(body)
+            print(body)
+            if form.is_valid():
+                form.save()
+                return HttpResponse(status=200, headers={'content-type': 'application/json'})
+            return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
+        return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
+    return HttpResponse("Access violation", status=403, headers={'content-type': 'application/json'})
 
 
 

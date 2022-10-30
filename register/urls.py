@@ -24,5 +24,6 @@ urlpatterns = [
     path('addProductStock/', views.addProductStock),   
     path('addPartner/', views.addPartner),
     path('getPartner/', views.getPartner),
-    # path('deletePartner/', views.deletePartner),
+    path('editPartner/', views.editPartner),
+    path('deletePartner/', views.deletePartner),
 ]
