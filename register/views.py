@@ -1,14 +1,8 @@
 from django.shortcuts import render, HttpResponse
-from django.core import serializers
-from django.http import FileResponse
-from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.datastructures import MultiValueDictKeyError
-from foodservice.settings import BASE_DIR
 
 from default.views import verifyLogin
-from reportlab.pdfgen import canvas
-import uuid
  
 from . import forms
 from . import models
