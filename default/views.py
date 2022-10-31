@@ -14,13 +14,14 @@ def login(request):
     email = body['email']
     password = body['password']
     User = models.User.objects.get(email=email)
+    Worker = models.CompanyWorker.objects.filter(person=User.id)
     req = r.post('http://127.0.0.1:80/auth/jwt/create/', {
         'username': User.username,
         'password': password
     })
     data = {
         'login_token': req.json(),
-        'user_id': User.id,
+        'user_id': Worker.id,
         'username': User.username,
         'email': User.email
     } 
