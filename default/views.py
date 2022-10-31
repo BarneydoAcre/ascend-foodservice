@@ -14,7 +14,7 @@ def login(request):
     email = body['email']
     password = body['password']
     User = models.User.objects.get(email=email)
-    Worker = models.CompanyWorker.objects.filter(person=User.id)
+    Worker = models.CompanyWorker.objects.get(person=User.id)
     req = r.post('http://127.0.0.1:80/auth/jwt/create/', {
         'username': User.username,
         'password': password
