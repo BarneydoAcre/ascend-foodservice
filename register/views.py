@@ -13,9 +13,9 @@ import json
 def addProduct(request):
     if request.method == "POST":
         body = json.loads(request.body)
-        print(body)
         if body["type"] == 1:
             form = forms.AddProductForm(body)
+            print(form.is_valid())
             if form.is_valid():
                 form.save()
                 return HttpResponse(status=200, headers={'content-type': 'application/json'})
