@@ -13,6 +13,7 @@ import json
 def addProduct(request):
     if request.method == "POST":
         body = json.loads(request.body)
+        print(body)
         if body["type"] == 1:
             form = forms.AddProductForm(body)
             if form.is_valid():

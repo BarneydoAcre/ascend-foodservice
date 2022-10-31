@@ -109,7 +109,7 @@ def printPDF(request, id):
     l = "_______________________________________"
 
     cnv.setFont("Helvetica", 8)
-    cnv.drawString(mm2p(col+25),mm2p(line),"DELICIAS DA LIA")
+    cnv.drawString(mm2p(col+25),mm2p(line),"EMPRESA") ##AQUI ERA DELICIAS DA LIA
     line += -6
     for i in sale:
         delivery = i.delivery
