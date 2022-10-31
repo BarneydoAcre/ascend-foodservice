@@ -30,8 +30,8 @@ def addProduct(request):
             form = forms.AddProductSaleForm(body)
             print(form.is_valid())
             if form.is_valid():
-                form.save()
-                return HttpResponse(status=200, headers={'content-type': 'application/json'})
+                last_id = form.save().id
+                return HttpResponse(last_id, status=200, headers={'content-type': 'application/json'})
             return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
     return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
