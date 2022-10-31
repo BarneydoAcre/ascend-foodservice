@@ -15,8 +15,6 @@ def addProduct(request):
         body = json.loads(request.body)
         body["company"] = int(body["company"])
         body["company_worker"] = int(body["company_worker"])
-        body["price"] = int(body["price"])
-        body["cost"] = 0
         
         print(body)
         if body["type"] == 1:
