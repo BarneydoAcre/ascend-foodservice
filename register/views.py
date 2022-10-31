@@ -13,6 +13,7 @@ import json
 def addProduct(request):
     if request.method == "POST":
         body = json.loads(request.body)
+        print(body)
         if body["type"] == 1:
             form = forms.AddProductForm(body)
             print(form.is_valid())
@@ -24,8 +25,8 @@ def addProduct(request):
             form = forms.AddProductSaleForm(body)
             print(form.is_valid())
             if form.is_valid():
-                last_id = form.save()
-                return HttpResponse(last_id.id, status=200, headers={'content-type': 'application/json'})
+                form.save()
+                return HttpResponse(status=200, headers={'content-type': 'application/json'})
             return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
     return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
