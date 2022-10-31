@@ -14,6 +14,7 @@ def addProduct(request):
     if request.method == "POST":
         body = json.loads(request.body)
         print(body)
+        body["cost"] = 0
         if body["type"] == 1:
             form = forms.AddProductForm(body)
             print(form.is_valid())

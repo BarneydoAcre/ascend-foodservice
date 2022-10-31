@@ -26,6 +26,7 @@ class AddProductSaleForm(forms.ModelForm):
             "type",
             "name",
             "price",
+            "cost",
         ]
 
 class AddBrandForm(forms.ModelForm):
