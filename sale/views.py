@@ -102,7 +102,7 @@ def printPDF(request, id):
     import io
     sale = models.Sale.objects.filter(id=id)
     sale_items = models.SaleItems.objects.filter(sale=id)
-    company = default.models.Company.objects.get(id=sale[0].company)
+    company = default.models.Company.objects.get(id=sale[0].company.id)
     buffer = io.BytesIO()
     cnv = canvas.Canvas(buffer, pagesize=(mm2p(72),mm2p(130)))
     line = 125
