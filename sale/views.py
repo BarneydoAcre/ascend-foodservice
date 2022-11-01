@@ -5,6 +5,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 
 from foodservice.settings import BASE_DIR
 import register.models
+import default.models
 
 from default.views import verifyLogin
 from reportlab.pdfgen import canvas
@@ -101,6 +102,7 @@ def printPDF(request, id):
     import io
     sale = models.Sale.objects.filter(id=id)
     sale_items = models.SaleItems.objects.filter(sale=id)
+    company = default.models.Company.objects.get(id=sale[0].company)
     buffer = io.BytesIO()
     cnv = canvas.Canvas(buffer, pagesize=(mm2p(72),mm2p(130)))
     line = 125
@@ -109,7 +111,7 @@ def printPDF(request, id):
     l = "_______________________________________"
 
     cnv.setFont("Helvetica", 8)
-    cnv.drawString(mm2p(col+25),mm2p(line),"EMPRESA") ##AQUI ERA DELICIAS DA LIA
+    cnv.drawString(mm2p(col+25),mm2p(line),company.company) ##AQUI ERA DELICIAS DA LIA
     line += -6
     for i in sale:
         delivery = i.delivery
@@ -141,9 +143,10 @@ def printPDF(request, id):
     line += -1
     cnv.drawString(mm2p(col-1),mm2p(line),l)
     line += -10
-    cnv.drawString(mm2p(col+3),mm2p(7),"Chave PIX: CPF - 002.715.540-45")
+    if len(company.pix_key) > 3:
+        cnv.drawString(mm2p(col+3),mm2p(7),"Chave PIX: CPF -"+company.pix_key)
     cnv.setFont("Helvetica", 6)
-    cnv.drawString(mm2p(col+25),mm2p(3),"Versão 0.00.001")
+    cnv.drawString(mm2p(col+25),mm2p(3),"Versão 0.00.002")
     cnv.drawString(mm2p(col+25),mm2p(1),l)
 
     cnv.showPage()

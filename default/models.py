@@ -22,6 +22,7 @@ class Company(models.Model):
     slug = models.CharField(max_length=250, blank=False)
     company = models.CharField(max_length=30, blank=False)
     cnpj = models.CharField(max_length=19, blank=False)
+    pix_key = models.CharField(max_length=19, blank=True, null=True, default="")
     
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
