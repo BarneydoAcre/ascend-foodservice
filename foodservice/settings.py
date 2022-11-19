@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     '18.231.147.205',
     '54.207.107.25',
     'ascendproject.ddns.net',
+    'meusistemafinanceiro.com.br'
 ]
 
 CORS_ALLOWED_ORIGINS = [
