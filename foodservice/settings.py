@@ -43,6 +43,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://192.168.100.128:3000',
 ]
 
+CSRF_TRUSTED_ORIGINS = ['https://meusistemafinanceiro.com.br']
+
 # Application definition
 
 INSTALLED_APPS = [
