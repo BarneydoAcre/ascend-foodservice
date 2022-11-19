@@ -39,6 +39,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:3000',
     'http://ascendproject-helpdesk.herokuapp.com',
     'http://ascendproject-foodservice.herokuapp.com',
+    'https://ascend-foodservice-front.vercel.app',
     'http://192.168.100.128:3000',
 ]
 

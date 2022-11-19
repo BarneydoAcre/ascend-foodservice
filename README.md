@@ -9,7 +9,9 @@ $ pip install django-cors-headers
 $ pip install djoser
 $ pip install psycopg2-binary (if linux)
 $ pip install reportlab
+
 $ apt install nodejs
+$ apt install npm
 $ npm install pm2@latest -g
 $ pm2 start server.js
 
