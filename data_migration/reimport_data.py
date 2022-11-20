@@ -2,7 +2,9 @@ import pandas as pd
 import json
 import psycopg2 as pg
 from datetime import datetime
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent
 
 class data_import():
     def con(self):
@@ -11,7 +13,7 @@ class data_import():
         return con
 
     def prod_type1(self):
-        j = open('D:\\Programas\\Projetos\\Ascend Project\\FoodService\\back\\data_migration\\exports\\procuct_type1_deliciasdalia.json', 'r')
+        j = open(str(BASE_DIR) + '\\exports\\procuct_type1_deliciasdalia.json', 'r')
         arq = json.loads(j.read())
         for a in arq:
             conn = self.con()
@@ -52,7 +54,7 @@ class data_import():
             conn.close()
 
     def prod_type2(self):
-        j = open('D:\\Programas\\Projetos\\Ascend Project\\FoodService\\back\\data_migration\\exports\\procuct_type2_deliciasdalia.json', 'r', encoding="utf-8")
+        j = open(str(BASE_DIR) + '\\exports\\procuct_type2_deliciasdalia.json', 'r', encoding="utf-8")
         arq = json.loads(j.read())
         for a in arq:
             conn = self.con()
@@ -93,7 +95,7 @@ class data_import():
             conn.close()
 
     def sale(self):
-        arq = open('D:\\Programas\\Projetos\\Ascend Project\\FoodService\\back\\data_migration\\exports\\sale_deliciasdalia.json', 'r', encoding='utf-8')
+        arq = open(str(BASE_DIR) + '\\exports\\sale_deliciasdalia.json', 'r', encoding='utf-8')
         arq = json.loads(arq.read())
         for a in arq:
             conn = self.con()
@@ -131,7 +133,7 @@ class data_import():
             conn.close()
 
     def saleItems(self):
-        arq = open('D:\\Programas\\Projetos\\Ascend Project\\FoodService\\back\\data_migration\\exports\\saleitems_deliciasdalia.json', 'r', encoding='utf-8')
+        arq = open(str(BASE_DIR) + '\\exports\\saleitems_deliciasdalia.json', 'r', encoding='utf-8')
         arq = json.loads(arq.read())
         # print(arq)
         for a in arq:
