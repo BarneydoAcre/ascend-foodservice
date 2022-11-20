@@ -13,7 +13,7 @@ class data_import():
         return con
 
     def prod_type1(self):
-        j = open(str(BASE_DIR) + '\\exports\\procuct_type1_deliciasdalia.json', 'r')
+        j = open(str(BASE_DIR) + '/exports/procuct_type1_deliciasdalia.json', 'r')
         arq = json.loads(j.read())
         for a in arq:
             conn = self.con()
@@ -54,7 +54,7 @@ class data_import():
             conn.close()
 
     def prod_type2(self):
-        j = open(str(BASE_DIR) + '\\exports\\procuct_type2_deliciasdalia.json', 'r', encoding="utf-8")
+        j = open(str(BASE_DIR) + '/exports/procuct_type2_deliciasdalia.json', 'r', encoding="utf-8")
         arq = json.loads(j.read())
         for a in arq:
             conn = self.con()
@@ -95,7 +95,7 @@ class data_import():
             conn.close()
 
     def sale(self):
-        arq = open(str(BASE_DIR) + '\\exports\\sale_deliciasdalia.json', 'r', encoding='utf-8')
+        arq = open(str(BASE_DIR) + '/exports/sale_deliciasdalia.json', 'r', encoding='utf-8')
         arq = json.loads(arq.read())
         for a in arq:
             conn = self.con()
@@ -133,7 +133,7 @@ class data_import():
             conn.close()
 
     def saleItems(self):
-        arq = open(str(BASE_DIR) + '\\exports\\saleitems_deliciasdalia.json', 'r', encoding='utf-8')
+        arq = open(str(BASE_DIR) + '/exports/saleitems_deliciasdalia.json', 'r', encoding='utf-8')
         arq = json.loads(arq.read())
         # print(arq)
         for a in arq:
