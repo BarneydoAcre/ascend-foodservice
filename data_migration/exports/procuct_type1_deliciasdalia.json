@@ -1,0 +1,12 @@
+[
+	{
+		"id": "1",
+		"name": "Queijo",
+		"brand": "Soberana",
+		"measure": "KG",
+		"stock": "10.0",
+		"cost": "2.0",
+		"price": "None",
+		"type": "1"
+	}
+]

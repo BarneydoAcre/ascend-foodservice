@@ -1,0 +1,1452 @@
+[
+	{
+		"id": "21",
+		"name": "1 pizza + refri",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "34.99",
+		"type": "2"
+	},
+	{
+		"id": "109",
+		"name": "Ad. Alface",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "1.5",
+		"type": "2"
+	},
+	{
+		"id": "114",
+		"name": "Ad. Batata Palha",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "2.0",
+		"type": "2"
+	},
+	{
+		"id": "104",
+		"name": "Ad. Calabresa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "4.5",
+		"type": "2"
+	},
+	{
+		"id": "45",
+		"name": "Ad. Catupiry",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "6.0",
+		"type": "2"
+	},
+	{
+		"id": "111",
+		"name": "Ad. Cebola Roxa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "2.0",
+		"type": "2"
+	},
+	{
+		"id": "107",
+		"name": "Ad. Chiken",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "6.0",
+		"type": "2"
+	},
+	{
+		"id": "47",
+		"name": "Ad. Creme Cheddar",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "2.0",
+		"type": "2"
+	},
+	{
+		"id": "106",
+		"name": "Ad. Filé Mignon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "10.0",
+		"type": "2"
+	},
+	{
+		"id": "44",
+		"name": "Ad. Hamburguer",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "6.0",
+		"type": "2"
+	},
+	{
+		"id": "112",
+		"name": "Ad. Maionese Caseira",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "1.5",
+		"type": "2"
+	},
+	{
+		"id": "113",
+		"name": "Ad. Molho ds Casa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "1.5",
+		"type": "2"
+	},
+	{
+		"id": "51",
+		"name": "Ad. Ovo",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "2.0",
+		"type": "2"
+	},
+	{
+		"id": "50",
+		"name": "Ad. Picles",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "3.0",
+		"type": "2"
+	},
+	{
+		"id": "115",
+		"name": "Ad. Pimenta Biquinho",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "2.0",
+		"type": "2"
+	},
+	{
+		"id": "49",
+		"name": "Ad. Presunto",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "3.0",
+		"type": "2"
+	},
+	{
+		"id": "108",
+		"name": "Ad. Purê de Batata",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "4.0",
+		"type": "2"
+	},
+	{
+		"id": "46",
+		"name": "Ad. Queijo Mussarela",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "4.9",
+		"type": "2"
+	},
+	{
+		"id": "48",
+		"name": "Ad. Queijo Prato",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "4.9",
+		"type": "2"
+	},
+	{
+		"id": "110",
+		"name": "Ad. Tomate",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "1.5",
+		"type": "2"
+	},
+	{
+		"id": "105",
+		"name": "Ad. de Bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "4.5",
+		"type": "2"
+	},
+	{
+		"id": "42",
+		"name": "Ad. milho",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "2.0",
+		"type": "2"
+	},
+	{
+		"id": "41",
+		"name": "Ad. strogonoff Frango",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "7.0",
+		"type": "2"
+	},
+	{
+		"id": "40",
+		"name": "Ad. strogonoff carne",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "7.0",
+		"type": "2"
+	},
+	{
+		"id": "23",
+		"name": "Batata Delícia de Calabresa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "8.0",
+		"price": "24.0",
+		"type": "2"
+	},
+	{
+		"id": "116",
+		"name": "Batata Frita 200 gr",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "12.0",
+		"type": "2"
+	},
+	{
+		"id": "59",
+		"name": "Batata Recheada Carne Seca",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "34.9",
+		"type": "2"
+	},
+	{
+		"id": "75",
+		"name": "Batata Recheada Frango",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "27.5",
+		"type": "2"
+	},
+	{
+		"id": "24",
+		"name": "Batata Recheada Frango c Bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "32.5",
+		"type": "2"
+	},
+	{
+		"id": "87",
+		"name": "Batata Recheada Strogonoff Frango",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "29.0",
+		"type": "2"
+	},
+	{
+		"id": "86",
+		"name": "Batata Recheada Strogonoff carne",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "29.0",
+		"type": "2"
+	},
+	{
+		"id": "58",
+		"name": "Batata Recheada de Carne",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "25.0",
+		"type": "2"
+	},
+	{
+		"id": "85",
+		"name": "Batata Recheado Bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "27.5",
+		"type": "2"
+	},
+	{
+		"id": "76",
+		"name": "Burguer Delicia Calabresa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "26.5",
+		"type": "2"
+	},
+	{
+		"id": "33",
+		"name": "Burguer Delícia  Simples",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "18.0",
+		"type": "2"
+	},
+	{
+		"id": "35",
+		"name": "Burguer Delícia Chicken c Bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "25.5",
+		"type": "2"
+	},
+	{
+		"id": "38",
+		"name": "Burguer Delícia Especial",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "32.0",
+		"type": "2"
+	},
+	{
+		"id": "22",
+		"name": "Burguer Delícia Filé",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "36.0",
+		"type": "2"
+	},
+	{
+		"id": "36",
+		"name": "Burguer Delícia Salada",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "21.5",
+		"type": "2"
+	},
+	{
+		"id": "71",
+		"name": "Burguer Delícia carne c Bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "25.5",
+		"type": "2"
+	},
+	{
+		"id": "99",
+		"name": "Coca Cola 2 l",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "12.0",
+		"type": "2"
+	},
+	{
+		"id": "100",
+		"name": "Coca Cola 2.5 l",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "13.0",
+		"type": "2"
+	},
+	{
+		"id": "90",
+		"name": "Coca Cola 310 ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "3.7",
+		"type": "2"
+	},
+	{
+		"id": "165",
+		"name": "Delícia gorgonzola",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "34.99",
+		"type": "2"
+	},
+	{
+		"id": "28",
+		"name": "Delícia salada promoção",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "19.99",
+		"type": "2"
+	},
+	{
+		"id": "123",
+		"name": "Entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "12.0",
+		"type": "2"
+	},
+	{
+		"id": "56",
+		"name": "Entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "7.0",
+		"type": "2"
+	},
+	{
+		"id": "52",
+		"name": "Entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "14.0",
+		"type": "2"
+	},
+	{
+		"id": "62",
+		"name": "Entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "4.0",
+		"type": "2"
+	},
+	{
+		"id": "9",
+		"name": "Entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "8.0",
+		"type": "2"
+	},
+	{
+		"id": "64",
+		"name": "Entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "11.0",
+		"type": "2"
+	},
+	{
+		"id": "32",
+		"name": "Entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "5.0",
+		"type": "2"
+	},
+	{
+		"id": "124",
+		"name": "Entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "13.0",
+		"type": "2"
+	},
+	{
+		"id": "88",
+		"name": "Fanta Laranja 2L",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "10.0",
+		"type": "2"
+	},
+	{
+		"id": "91",
+		"name": "Fanta Laranja 310 ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "3.7",
+		"type": "2"
+	},
+	{
+		"id": "98",
+		"name": "Funada Guaraná 2l",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "9.0",
+		"type": "2"
+	},
+	{
+		"id": "97",
+		"name": "Funada Tubaína  2 l",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "9.0",
+		"type": "2"
+	},
+	{
+		"id": "92",
+		"name": "Guaraná Antártica 310ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "3.7",
+		"type": "2"
+	},
+	{
+		"id": "69",
+		"name": "Lasanha Bolonhesa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "29.9",
+		"type": "2"
+	},
+	{
+		"id": "57",
+		"name": "Lasanha Frango",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "29.9",
+		"type": "2"
+	},
+	{
+		"id": "55",
+		"name": "Lasanha Presunto",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "29.9",
+		"type": "2"
+	},
+	{
+		"id": "77",
+		"name": "Limoneto",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "6.0",
+		"type": "2"
+	},
+	{
+		"id": "65",
+		"name": "Pastel Calabresa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "14.0",
+		"type": "2"
+	},
+	{
+		"id": "83",
+		"name": "Pastel Carne ",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "10.0",
+		"type": "2"
+	},
+	{
+		"id": "82",
+		"name": "Pastel Carne c queijo",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "10.0",
+		"type": "2"
+	},
+	{
+		"id": "53",
+		"name": "Pastel Chocolate ",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "11.0",
+		"type": "2"
+	},
+	{
+		"id": "121",
+		"name": "Pastel Frango",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "10.0",
+		"type": "2"
+	},
+	{
+		"id": "79",
+		"name": "Pastel Frango 15 CM",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "10.0",
+		"type": "2"
+	},
+	{
+		"id": "84",
+		"name": "Pastel Moda da Casa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "20.0",
+		"type": "2"
+	},
+	{
+		"id": "66",
+		"name": "Pastel Queijo",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "14.0",
+		"type": "2"
+	},
+	{
+		"id": "80",
+		"name": "Pastel Queijo 15 CM",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "14.0",
+		"type": "2"
+	},
+	{
+		"id": "81",
+		"name": "Pastel Romeu & Julieta",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "11.0",
+		"type": "2"
+	},
+	{
+		"id": "74",
+		"name": "Pizza Chocolate",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "32.0",
+		"type": "2"
+	},
+	{
+		"id": "70",
+		"name": "Pizza Delícia Calabresa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "34.99",
+		"type": "2"
+	},
+	{
+		"id": "60",
+		"name": "Pizza Delícia Chicken com Bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "42.0",
+		"type": "2"
+	},
+	{
+		"id": "68",
+		"name": "Pizza Delícia Portuguesa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "39.0",
+		"type": "2"
+	},
+	{
+		"id": "61",
+		"name": "Pizza Delícia Strogonoff Carne",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "43.0",
+		"type": "2"
+	},
+	{
+		"id": "63",
+		"name": "Pizza Delícia chicken C Bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "42.0",
+		"type": "2"
+	},
+	{
+		"id": "31",
+		"name": "Pizza Delícia de Bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "12.0",
+		"price": "39.0",
+		"type": "2"
+	},
+	{
+		"id": "72",
+		"name": "Pizza Marguerita",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "39.0",
+		"type": "2"
+	},
+	{
+		"id": "73",
+		"name": "Pizza brócolis bacon broto",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "33.0",
+		"type": "2"
+	},
+	{
+		"id": "29",
+		"name": "Pizza brócolis com bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "43.0",
+		"type": "2"
+	},
+	{
+		"id": "10",
+		"name": "Pizza chicken com Bacon broto",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "32.0",
+		"type": "2"
+	},
+	{
+		"id": "37",
+		"name": "Pizza portuguesa broto",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "29.0",
+		"type": "2"
+	},
+	{
+		"id": "125",
+		"name": "Pizza promoção limitada",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "30.0",
+		"type": "2"
+	},
+	{
+		"id": "67",
+		"name": "Pizza strogonoff de Frango",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "43.0",
+		"type": "2"
+	},
+	{
+		"id": "54",
+		"name": "Pão Caseiro",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "10.0",
+		"type": "2"
+	},
+	{
+		"id": "43",
+		"name": "Pão Hamburguer",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "2.0",
+		"type": "2"
+	},
+	{
+		"id": "96",
+		"name": "Suco Del Vale Laranja 250 ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "4.0",
+		"type": "2"
+	},
+	{
+		"id": "117",
+		"name": "Suco Del vale uva 1l",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "10.0",
+		"type": "2"
+	},
+	{
+		"id": "103",
+		"name": "Suco Uva Del vale 450 ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "5.0",
+		"type": "2"
+	},
+	{
+		"id": "95",
+		"name": "Suco cx Laranja 150 ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "3.5",
+		"type": "2"
+	},
+	{
+		"id": "94",
+		"name": "Suco cx Morango 150ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "3.5",
+		"type": "2"
+	},
+	{
+		"id": "102",
+		"name": "Suco del Vale Laranja 1 l",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "10.0",
+		"type": "2"
+	},
+	{
+		"id": "118",
+		"name": "Suco laranja 330ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "5.0",
+		"type": "2"
+	},
+	{
+		"id": "119",
+		"name": "Suco laranja viva F.900ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "11.0",
+		"type": "2"
+	},
+	{
+		"id": "89",
+		"name": "Sukita 200ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "3.5",
+		"type": "2"
+	},
+	{
+		"id": "101",
+		"name": "Tubaína 1.5 l",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "8.0",
+		"type": "2"
+	},
+	{
+		"id": "39",
+		"name": "Xis Prensado Gaúcho",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "25.0",
+		"type": "2"
+	},
+	{
+		"id": "157",
+		"name": "burguer carne bacon promoção",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "23.99",
+		"type": "2"
+	},
+	{
+		"id": "14",
+		"name": "burguer delícia cal promoção",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "24.99",
+		"type": "2"
+	},
+	{
+		"id": "15",
+		"name": "burguer delícia especial promoção",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "30.5",
+		"type": "2"
+	},
+	{
+		"id": "25",
+		"name": "cachorro quente",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "5.0",
+		"type": "2"
+	},
+	{
+		"id": "4",
+		"name": "caldo 1 l",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "24.99",
+		"type": "2"
+	},
+	{
+		"id": "2",
+		"name": "caldo 500 ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "14.99",
+		"type": "2"
+	},
+	{
+		"id": "3",
+		"name": "caldo 750 ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "19.99",
+		"type": "2"
+	},
+	{
+		"id": "11",
+		"name": "cerveja moinho",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "7.5",
+		"type": "2"
+	},
+	{
+		"id": "160",
+		"name": "cerveja zero",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "6.0",
+		"type": "2"
+	},
+	{
+		"id": "26",
+		"name": "combo",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "39.99",
+		"type": "2"
+	},
+	{
+		"id": "20",
+		"name": "combo 2 pizzas",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "67.9",
+		"type": "2"
+	},
+	{
+		"id": "163",
+		"name": "combo mini pizza",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "24.0",
+		"type": "2"
+	},
+	{
+		"id": "162",
+		"name": "delicia  simples",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "18.0",
+		"type": "2"
+	},
+	{
+		"id": "128",
+		"name": "delicia especial",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "32.0",
+		"type": "2"
+	},
+	{
+		"id": "127",
+		"name": "delicia file",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "36.0",
+		"type": "2"
+	},
+	{
+		"id": "156",
+		"name": "delícia bagunça tamanho família",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "69.99",
+		"type": "2"
+	},
+	{
+		"id": "27",
+		"name": "delícia filé promoção",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "34.5",
+		"type": "2"
+	},
+	{
+		"id": "122",
+		"name": "entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "9.0",
+		"type": "2"
+	},
+	{
+		"id": "78",
+		"name": "entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "10.0",
+		"type": "2"
+	},
+	{
+		"id": "34",
+		"name": "entrega",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "6.0",
+		"type": "2"
+	},
+	{
+		"id": "30",
+		"name": "entrega ",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "3.0",
+		"type": "2"
+	},
+	{
+		"id": "6",
+		"name": "feijoada 1 l c acomp",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "29.99",
+		"type": "2"
+	},
+	{
+		"id": "5",
+		"name": "feijoada 750 ml c acomp",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "24.99",
+		"type": "2"
+	},
+	{
+		"id": "8",
+		"name": "feijoada simples 1 l",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "24.99",
+		"type": "2"
+	},
+	{
+		"id": "7",
+		"name": "feijoada simples 750ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "19.99",
+		"type": "2"
+	},
+	{
+		"id": "16",
+		"name": "heineken long neck",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "7.0",
+		"type": "2"
+	},
+	{
+		"id": "146",
+		"name": "pastel 15 cm calabresa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "14.0",
+		"type": "2"
+	},
+	{
+		"id": "147",
+		"name": "pastel 15 cm moda casa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "20.0",
+		"type": "2"
+	},
+	{
+		"id": "150",
+		"name": "pizza broto bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "29.0",
+		"type": "2"
+	},
+	{
+		"id": "153",
+		"name": "pizza broto brócolis c bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "33.0",
+		"type": "2"
+	},
+	{
+		"id": "149",
+		"name": "pizza broto calabresa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "28.0",
+		"type": "2"
+	},
+	{
+		"id": "152",
+		"name": "pizza broto chicken c bacon",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "32.0",
+		"type": "2"
+	},
+	{
+		"id": "148",
+		"name": "pizza broto choc",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "22.0",
+		"type": "2"
+	},
+	{
+		"id": "151",
+		"name": "pizza broto portuguesa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "29.0",
+		"type": "2"
+	},
+	{
+		"id": "154",
+		"name": "pizza broto strogonoff",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "33.0",
+		"type": "2"
+	},
+	{
+		"id": "12",
+		"name": "pizza calabresa",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "38.0",
+		"type": "2"
+	},
+	{
+		"id": "13",
+		"name": "pizza calabresa broto",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "28.0",
+		"type": "2"
+	},
+	{
+		"id": "164",
+		"name": "pizza cone",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "9.99",
+		"type": "2"
+	},
+	{
+		"id": "158",
+		"name": "pizza promoção",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "30.0",
+		"type": "2"
+	},
+	{
+		"id": "126",
+		"name": "prensado gaúcho promoção",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "23.5",
+		"type": "2"
+	},
+	{
+		"id": "159",
+		"name": "promo",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "17.99",
+		"type": "2"
+	},
+	{
+		"id": "18",
+		"name": "promoção combo salada",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "39.99",
+		"type": "2"
+	},
+	{
+		"id": "17",
+		"name": "promoção kids",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "19.99",
+		"type": "2"
+	},
+	{
+		"id": "155",
+		"name": "refri lata",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "3.7",
+		"type": "2"
+	},
+	{
+		"id": "19",
+		"name": "salgado unidade posto",
+		"brand": "None",
+		"measure": "None",
+		"stock": "None",
+		"cost": "0.0",
+		"price": "3.0",
+		"type": "2"
+	},
+	{
+		"id": "93",
+		"name": "Água c Gás 500 ml",
+		"brand": "None",
+		"measure": "None",
+		"stock": "0.0",
+		"cost": "0.0",
+		"price": "4.0",
+		"type": "2"
+	}
+]
