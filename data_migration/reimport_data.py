@@ -174,7 +174,7 @@ class data_import():
             except:
                 pass
 
-# data_import().prod_type1()
-# data_import().prod_type2()
-# data_import().sale()
+data_import().prod_type1()
+data_import().prod_type2()
+data_import().sale()
 data_import().saleItems()
