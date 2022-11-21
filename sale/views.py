@@ -115,7 +115,7 @@ def printPDF(request, id):
     line += -6
     for i in sale:
         delivery = i.delivery
-        date = str(i.created.split(' ')[0]).split('-')
+        date = str(i.created).split(' ')[0].split('-')
         date = date[2]+'/'+date[1]+'/'+date[0]
         cnv.drawString(mm2p(col),mm2p(line),"Venda Nº: "+str(i.id))
         cnv.drawString(mm2p(col+44),mm2p(line),str(date))
