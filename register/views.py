@@ -94,7 +94,7 @@ def getProduct(request):
                     'brand': str(m.brand),
                     'measure': str(m.measure),
                     'stock': str(m.stock),
-                    'cost': str(round(m.cost,2)),
+                    'cost': str(round(m.cost,2)) if type(m.cost) != type(None) else '0',
                     'price': str(m.price),
                     'type': str(m.type)
                 })
@@ -110,7 +110,6 @@ def setProductCost(id, company):
     for m in model:
         cost += m.product_item.cost*m.quantity
         quantity += m.quantity
-
         data.append({
             'id': str(m.id),
             'cost': str(m.product_item.cost),
@@ -118,7 +117,7 @@ def setProductCost(id, company):
     if quantity == 0:
         return 0
     else:    
-        return cost/quantity
+        models.Product.objects.filter(id=id).update(cost=cost)
 
 
 @csrf_exempt
@@ -126,7 +125,6 @@ def addProductItems(request):
     if request.method == "POST":
         body = json.loads(request.body)
         print(request.body)
-        cost = 0
         for i in body["items"]:
             form = forms.AddProductItemsForm({
                 "company": body["company"],
@@ -137,8 +135,7 @@ def addProductItems(request):
             })
             if form.is_valid():
                 form.save()
-            cost += setProductCost(body["product_sale"], body["company"])
-        models.Product.objects.filter(company=body["company"], id=body["product_sale"]).update(cost=cost)
+            setProductCost(body["product_sale"], body["company"])
         return HttpResponse(status=200, headers={'content-type': 'application/json'})
     return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
