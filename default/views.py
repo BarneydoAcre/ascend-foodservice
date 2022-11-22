@@ -14,25 +14,25 @@ def login(request):
     email = body['email']
     password = body['password']
     User = models.User.objects.get(email=email)
-    # Worker = models.CompanyWorker.objects.get(person=User.id)
     req = r.post('http://127.0.0.1:80/auth/jwt/create/', {
         'username': User.username,
         'password': password
     })
-    data = {
-        'login_token': req.json(),
-        # 'user_id': Worker.id,
-        'username': User.username,
-        'email': User.email
-    } 
-
-    return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
+    if req.status_code == 200:
+        data = {
+            'login_token': req.json(),
+            'username': User.username,
+            'email': User.email
+        } 
+        return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
+    return HttpResponse(status=401)
 
 def verifyLogin(token):
     req = r.post('http://127.0.0.1:80/auth/jwt/verify/', {
         'token': token,
     })
-    return req.status_code
+    return HttpResponse(status=req.status_code)
+
 @csrf_exempt
 def register(request):
     if request.method == "POST":
@@ -49,9 +49,9 @@ def getCompany(request):
         get = request.GET
     except MultiValueDictKeyError:
         return HttpResponse("Cannot find your email!", status=401, headers={'content-type': 'application/json'})
-    key = get["key"]
+    token = get["token"]
     email = get["email"]
-    if True:
+    if verifyLogin(token):
         user = models.User.objects.get(email=email)
         companyworker = models.CompanyWorker.objects.filter(person=user).order_by('company')
         comp = []

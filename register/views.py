@@ -26,7 +26,6 @@ def addProduct(request):
             return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
         elif body["type"] == 2:
             form = forms.AddProductSaleForm(body)
-            print(form.is_valid())
             if form.is_valid():
                 last_id = form.save().id
                 return HttpResponse(last_id, status=200, headers={'content-type': 'application/json'})
@@ -85,7 +84,7 @@ def getProduct(request):
         except MultiValueDictKeyError:
             get = []
             return HttpResponse("Invalid data!", status=401, headers={'content-type': 'application/json'})
-        if verifyLogin(get['token'][0]) == 200:
+        if verifyLogin(get['token']):
             model = models.Product.objects.filter(company=get['company'][0], type=get['type'][0])
             data = []
             for m in model:
@@ -102,7 +101,7 @@ def getProduct(request):
             return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
         return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
 
-def getProductCost(id, company):
+def setProductCost(id, company):
     model = models.ProductItems.objects.filter(company=company, product=id)
     data = []
     cost = 0
@@ -138,7 +137,7 @@ def addProductItems(request):
             })
             if form.is_valid():
                 form.save()
-            cost += getProductCost(body["product_sale"], body["company"])
+            cost += setProductCost(body["product_sale"], body["company"])
         models.Product.objects.filter(company=body["company"], id=body["product_sale"]).update(cost=cost)
         return HttpResponse(status=200, headers={'content-type': 'application/json'})
     return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
@@ -160,7 +159,7 @@ def getProductItems(request):
         except MultiValueDictKeyError:
             get = []
             return HttpResponse("Invalid data!", status=401, headers={'content-type': 'application/json'})
-        if verifyLogin(get['token'][0]) == 200:
+        if verifyLogin(get['token'][0]):
             model = models.ProductItems.objects.filter(company=get['company'][0], product=get['product'][0])
             data = []
             for m in model:

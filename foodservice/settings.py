@@ -31,7 +31,8 @@ ALLOWED_HOSTS = [
     '18.231.147.205',
     '54.207.107.25',
     'ascendproject.ddns.net',
-    'meusistemafinanceiro.com.br'
+    'meusistemafinanceiro.com.br',
+    '192.168.3.26'
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -41,6 +42,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://ascendproject-foodservice.herokuapp.com',
     'https://ascend-foodservice-front.vercel.app',
     'http://192.168.100.128:3000',
+    'http://192.168.3.26:3000'
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://meusistemafinanceiro.com.br']
