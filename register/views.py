@@ -36,12 +36,16 @@ def addProduct(request):
 def editProduct(request):
     if request.method == "POST":
         body = json.loads(request.body)
-        if body["type"] == 2:
+        if verifyLogin(body['token']):
             prod = models.Product.objects.filter(company= body["company"], id=body["id"])
             if prod[0].name != body["name"]:
                 prod.update(name=body["name"])
-            if prod[0].price != body["price"]:
-                prod.update(price=body["price"])    
+            elif prod[0].price != body["price"]:
+                prod.update(price=body["price"])
+            elif prod[0].cost != body["cost"]:
+                prod.update(cost=body["cost"])
+            elif prod[0].stock != body["stock"]:
+                prod.update(stock=body["stock"])    
             return HttpResponse(status=200, headers={'content-type': 'application/json'})
         return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
     return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
@@ -51,8 +55,9 @@ def deleteProduct(request):
     if request.method == "POST":
         body = json.loads(request.body)
         if int(body["type"]) == 1:
-            model = models.Product.objects.filter(company= body["company"], id=body["id"])
-            if len(model) > 0:
+            model = models.Product.objects.filter(company=body["company"], id=body["id"])
+            productSale = models.ProductItems.objects.filter(company=body["company"], product_item=body["id"])
+            if len(productSale) > 0:
                 return HttpResponse(status=201, headers={'content-type': 'application/json'})
             else:
                 model.delete()
@@ -91,7 +96,9 @@ def getProduct(request):
                 data.append({
                     'id': str(m.id),
                     'name': str(m.name),
+                    'brand_id': str(m.brand.id),
                     'brand': str(m.brand),
+                    'measure_id': str(m.measure.id),
                     'measure': str(m.measure),
                     'stock': str(m.stock),
                     'cost': str(round(m.cost,2)) if type(m.cost) != type(None) else '0',
