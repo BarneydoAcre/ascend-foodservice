@@ -192,7 +192,7 @@ def getBrand(request):
         except MultiValueDictKeyError:
             get = []
             return HttpResponse("Invalid data!", status=401, headers={'content-type': 'application/json'})
-        if verifyLogin(get['token']) == 200:
+        if verifyLogin(get['token']):
             data = []
             for m in models.ProductBrand.objects.filter(company=get['company'][0]):
                 data.append({
@@ -220,7 +220,7 @@ def getMeasure(request):
         except MultiValueDictKeyError:
             get = []
             return HttpResponse("Invalid data!", status=401, headers={'content-type': 'application/json'})
-        if verifyLogin(get['token']) == 200:
+        if verifyLogin(get['token']):
             data = []
             for m in models.ProductMeasure.objects.filter(company=get['company'][0]):
                 data.append({
@@ -268,7 +268,7 @@ def getPartner(request):
             get = []
             return HttpResponse("Invalid data!", status=401, headers={'content-type': 'application/json'})
 
-        if verifyLogin(get['token']) == 200:
+        if verifyLogin(get['token']):
             data = []
             for m in models.Partner.objects.filter(company=get['company'][0]):
                 try:
