@@ -96,9 +96,9 @@ def getProduct(request):
                 data.append({
                     'id': str(m.id),
                     'name': str(m.name),
-                    'brand_id': str(m.brand.id),
+                    'brand_id': str(m.brand.id) if type(m.brand) != type(None) else '',
                     'brand': str(m.brand),
-                    'measure_id': str(m.measure.id),
+                    'measure_id': str(m.measure.id) if str(m.measure) != type(None) else '',
                     'measure': str(m.measure),
                     'stock': str(m.stock),
                     'cost': str(round(m.cost,2)) if type(m.cost) != type(None) else '0',
