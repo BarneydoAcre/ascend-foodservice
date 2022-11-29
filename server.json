@@ -2,7 +2,7 @@
     "apps": [{
         "name": "cloudsys",
         "script": "manage.py",
-        "args": ["runserver", "127.0.0.1:8000"],
+        "args": ["runserver", "127.0.0.1:8080"],
         "exec_mode": "fork",
         "instances": "1",
         "wait_ready": true,
