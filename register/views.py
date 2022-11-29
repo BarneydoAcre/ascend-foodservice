@@ -272,10 +272,8 @@ def getPartner(request):
         try:
             get = dict(request.GET)
         except MultiValueDictKeyError:
-            get = []
             return HttpResponse("Invalid data!", status=401, headers={'content-type': 'application/json'})
-
-        if verifyLogin(get['token']):
+        if verifyLogin(get['token'][0]):
             data = []
             for m in models.Partner.objects.filter(company=get['company'][0]):
                 try:

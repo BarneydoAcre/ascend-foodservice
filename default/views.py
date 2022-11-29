@@ -74,8 +74,7 @@ def getCities(request):
         except MultiValueDictKeyError:
             get = []
             return HttpResponse("Invalid data!", status=401, headers={'content-type': 'application/json'})
-        
-        if verifyLogin(get['token'][0]) == 200:
+        if verifyLogin(get['token'][0]):
             model = models.City.objects.all()
             cities = []
             for m in model:
