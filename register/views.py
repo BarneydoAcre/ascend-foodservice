@@ -8,6 +8,17 @@ from . import forms
 from . import models
 import json
 
+from rest_framework import viewsets
+from . import serializer
+
+
+class ProductsViewSet(viewsets.ModelViewSet):
+    queryset = models.Product.objects.filter(type=1)
+    serializer_class = serializer.ProductSerializer
+
+class PartnersViewSet(viewsets.ModelViewSet):
+    queryset = models.Partner.objects.filter()
+    serializer_class = serializer.PartnerSerializer
 
 @csrf_exempt
 def addProduct(request):
@@ -328,6 +339,4 @@ def deletePartner(request):
             return HttpResponse("Access violation", status=401, headers={'content-type': 'application/json'})
         return HttpResponse("Access violation", status=402, headers={'content-type': 'application/json'})
     return HttpResponse("Access violation", status=403, headers={'content-type': 'application/json'})
-
-
 

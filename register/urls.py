@@ -1,11 +1,13 @@
 from django.urls import path, include
-# from rest_framework.routers import DefaultRouter
 from . import views
+
+from rest_framework import routers
 
 app_name = 'register'
 
-# router = DefaultRouter(trailing_slash=False)
-# router.register(r'partner/', views.PartnerViewSet)
+router = routers.DefaultRouter() # DefaultRouter(trailing_slash=False)
+router.register('product', views.ProductsViewSet, basename='Produtos')
+router.register('partner', views.PartnersViewSet, basename='Parceiro')
 
 # urlpatterns = router.urls
 urlpatterns = [
@@ -26,4 +28,6 @@ urlpatterns = [
     path('getPartner/', views.getPartner),
     path('editPartner/', views.editPartner),
     path('deletePartner/', views.deletePartner),
+
+    path('', include(router.urls))
 ]
