@@ -104,8 +104,8 @@ def printPDF(request, id):
     sale_items = models.SaleItems.objects.filter(sale=id)
     company = default.models.Company.objects.get(id=sale[0].company.id)
     buffer = io.BytesIO()
-    cnv = canvas.Canvas(buffer, pagesize=(mm2p(72),mm2p(80)))
-    line = 125
+    cnv = canvas.Canvas(buffer, pagesize=(mm2p(72),mm2p(100)))
+    line = 95
     col = 1
     total = 0
     l = "_______________________________________"
@@ -144,7 +144,7 @@ def printPDF(request, id):
     cnv.drawString(mm2p(col-1),mm2p(line),"Total_______________________________"+str(round(total+delivery,3)))
     line += -1
     cnv.drawString(mm2p(col-1),mm2p(line),l)
-    line += -40
+    line += -20
     if len(company.pix_key) > 3:
         cnv.drawString(mm2p(col+3),mm2p(line),"Chave PIX: CPF -"+company.pix_key)
     line += -4
