@@ -140,7 +140,7 @@ def printPDF(request, id):
     cnv.drawString(mm2p(col-1),mm2p(line),l)
     line += -4
     cnv.drawString(mm2p(col-1),mm2p(line),l)
-    line += -5
+    line += -4
     cnv.drawString(mm2p(col-1),mm2p(line),"Total_______________________________"+str(round(total+delivery,3)))
     line += -1
     cnv.drawString(mm2p(col-1),mm2p(line),l)
