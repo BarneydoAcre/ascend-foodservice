@@ -146,7 +146,7 @@ def printPDF(request, id):
     cnv.drawString(mm2p(col-1),mm2p(line),l)
     line += -20
     if len(company.pix_key) > 3:
-        cnv.setFont("Helvetica", 14)
+        cnv.setFont("Helvetica", 12)
         cnv.drawString(mm2p(col+3),mm2p(7),"Chave PIX: CPF -"+company.pix_key)
     cnv.setFont("Helvetica", 6)
     cnv.drawString(mm2p(col+25),mm2p(3),"Versão 0.00.002")
