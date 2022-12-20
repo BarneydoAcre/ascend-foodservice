@@ -73,7 +73,7 @@ class data_import():
             i+=1
 
     def company(self):
-        table = pd.read_excel("exports/company.xlsx")
+        table = pd.read_excel("exports/company.xlsx", sheet_name="")
         i = 0
         try:
             len_id = len(table['id'])

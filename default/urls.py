@@ -1,13 +1,12 @@
 from django.urls import path, include
-
-from . import views
+from default.views import *
 
 app_name = 'default'
 
 urlpatterns = [
-    path('auth/login/', views.login),
-    path('auth/register/', views.register),
-    path('getCompany/', views.getCompany),
-    path('getCities/', views.getCities),
-    path('addBugReport/', views.addBugReport),
+    path('company_worker/', CompanyWorkerViewSet.as_view()),
+    # path('auth/register/', views.register),
+    # path('getCompany/', views.getCompany),
+    # path('getCities/', views.getCities),
+    # path('addBugReport/', views.addBugReport),
 ]

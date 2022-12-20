@@ -5,9 +5,7 @@ from rest_framework import routers
 
 app_name = 'register'
 
-router = routers.DefaultRouter() # DefaultRouter(trailing_slash=False)
-router.register('product', views.ProductsViewSet, basename='Produtos')
-router.register('partner', views.PartnersViewSet, basename='Parceiro')
+# router = routers.DefaultRouter() # DefaultRouter(trailing_slash=False)
 
 # urlpatterns = router.urls
 urlpatterns = [
@@ -29,5 +27,5 @@ urlpatterns = [
     path('editPartner/', views.editPartner),
     path('deletePartner/', views.deletePartner),
 
-    path('', include(router.urls))
+    # path('', include(router.urls))
 ]
