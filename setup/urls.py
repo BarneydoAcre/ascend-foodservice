@@ -5,9 +5,11 @@ app_name = 'register'
 
 from rest_framework import routers
 import sale.views as sale
+import register.views as register
 
 router = routers.DefaultRouter()
 router.register('sale', sale.SaleViewSet, basename='sale')
+router.register('product', register.ProductViewSet, basename='product')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

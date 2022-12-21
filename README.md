@@ -67,3 +67,22 @@ $ py manage.py 0.0.0.0:80
 200 - OK
 ```
 
+
+# Documentação
+
+## Manipulação de vendas
+POST - deve seguir o seguindo modelo na requisição passando o TOKEN gerado no login
+```
+{
+	"value": "90.0",
+	"delivery": "20.0",
+	"total": "110.0",
+	"products": [
+		{
+			"id": 2,
+			"price": 20.0,
+			"quantity": 2.0
+		}
+	]
+}
+```

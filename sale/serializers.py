@@ -11,6 +11,7 @@ class SaleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sale
         fields = [
+            'id',
             'company',
             'company_worker',
             'value',

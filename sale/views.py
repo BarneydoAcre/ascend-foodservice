@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from sale.serializers import *
 from sale.models import *
+from register.models import *
 from default.models import *
 import json
 
@@ -25,19 +26,44 @@ class SaleViewSet(viewsets.ModelViewSet):
     serializer_class = SaleSerializer
     
     def create(self, request):
-        for c in CompanyWorker.objects.filter(id=request.data['company_worker'][0],person=request.user.id):
-            if c.company.id == int(request.data['company'][0]):
-                sale_data = SaleSerializer(data=request.data)
-                if sale_data.is_valid():
-                    sale = Sale.objects.create(
+        try:
+            data = json.loads(request.body)
+        except:
+            data = request.data
+            if len(data) == 0:
+                pass
+
+        for c in CompanyWorker.objects.filter(company__slug=request.GET['company'],person=request.user.id):
+            data['company'] = c.company.id
+            data['company_worker'] = c.id
+            sale_data = SaleSerializer(data=data)
+            if sale_data.is_valid():
+                sale = Sale.objects.create(
+                    company=sale_data.validated_data['company'],
+                    company_worker=sale_data.validated_data['company_worker'],
+                    value=sale_data.validated_data['value'],
+                    delivery=sale_data.validated_data['delivery'],
+                    total=sale_data.validated_data['total']
+                )
+                products = []
+                for p in data['products']:
+                    sale_items = SaleItems.objects.create(
                         company=sale_data.validated_data['company'],
                         company_worker=sale_data.validated_data['company_worker'],
-                        value=sale_data.validated_data['value'],
-                        delivery=sale_data.validated_data['delivery'],
-                        total=sale_data.validated_data['total']
+                        sale=sale,
+                        product=Product.objects.get(id=int(p['id'])),
+                        price=int(p['price']),
+                        quantity=int(p['quantity'])
                     )
-                    serialized_data = SaleSerializer(instance=sale)
-                    return Response(serialized_data.data, status=status.HTTP_201_CREATED)    
+                    products.append({
+                        "id": sale_items.product.id,
+                        "name": sale_items.product.name,
+                        "price": sale_items.price,
+                        "quantity": sale_items.quantity
+                    })
+                data['sale'] = sale.id
+                data['products'] = products
+                return Response(data, status=status.HTTP_201_CREATED)    
         return Response({'detail': 'Dados inválidos.'}, status=status.HTTP_401_UNAUTHORIZED)
     
     def list(self, request):
