@@ -70,13 +70,20 @@ $ py manage.py 0.0.0.0:80
 
 # Documentação
 
-## Manipulação de vendas
-POST - deve seguir o seguindo modelo na requisição passando o TOKEN gerado no login
+## Manipulação de vendas (/sale/)
+GET - acessar passando o paramêtro -> ?COMPANY= <-
 ```
 {
-	"value": "90.0",
-	"delivery": "20.0",
-	"total": "110.0",
+	"value": "40",
+	"delivery": "5",
+	"total": "45",
+}
+POST - deve seguir o seguindo modelo na requisição passando o TOKEN gerado no login e o paramêtro -> ?COMPANY= <-
+```
+{
+	"value": "40",
+	"delivery": "5",
+	"total": "45",
 	"products": [
 		{
 			"id": 2,
@@ -84,5 +91,14 @@ POST - deve seguir o seguindo modelo na requisição passando o TOKEN gerado no 
 			"quantity": 2.0
 		}
 	]
+}
+```
+PATCH - acessar a url com ID da venda e passando o paramêtro -> ?COMPANY= <- deve-se enviar o parâmetro a ser alterado
+Pode se passar qualquer um individualmente
+```
+{
+	"value": "40",
+	"delivery": "5",
+	"total": "45",
 }
 ```
