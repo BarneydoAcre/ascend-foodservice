@@ -30,7 +30,6 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '18.231.147.205',
     '54.207.107.25',
-    'ascendproject.ddns.net',
     'meusistemafinanceiro.com.br',
     '192.168.3.26'
 ]
@@ -38,9 +37,7 @@ ALLOWED_HOSTS = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'http://ascendproject-helpdesk.herokuapp.com',
-    'http://ascendproject-setup.herokuapp.com',
-    'https://ascend-setup-front.vercel.app',
+    'https://ascend-foodservice-front.vercel.app',
     'http://192.168.100.128:3000',
     'http://192.168.3.26:3000'
 ]
