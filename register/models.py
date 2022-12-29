@@ -38,10 +38,11 @@ class Product(models.Model):
         (1, "Consumo",),
         (2, "Revenda",),
     )
-    company = models.ForeignKey(default.models.Company, on_delete=models.PROTECT)
-    company_worker = models.ForeignKey(default.models.CompanyWorker, on_delete=models.PROTECT)
-    type = models.IntegerField(choices=c, blank=False)
-    name = models.CharField(max_length=50, blank=False)
+    company = models.ForeignKey(default.models.Company, null=False, blank=False, on_delete=models.PROTECT)
+    company_worker = models.ForeignKey(default.models.CompanyWorker, null=False, blank=False, on_delete=models.PROTECT)
+    type = models.IntegerField(choices=c, null=False, blank=False)
+    name = models.CharField(max_length=50, null=False, blank=False)
+    # ACIMA OBRIGATÓRIOS
     brand = models.ForeignKey(ProductBrand, on_delete=models.PROTECT, blank=True, null=True)
     measure = models.ForeignKey(ProductMeasure, on_delete=models.PROTECT, blank=True, null=True)
     stock = models.FloatField(blank=True, null=True)

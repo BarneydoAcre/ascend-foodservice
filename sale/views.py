@@ -8,6 +8,7 @@ from rest_framework import viewsets, generics, filters
 from django.shortcuts import get_object_or_404
 from django.utils.datastructures import MultiValueDictKeyError
 from django.views.decorators.csrf import csrf_exempt
+from django.http import FileResponse
 
 from sale.serializers import *
 from sale.models import *
@@ -43,7 +44,7 @@ class SaleViewSet(viewsets.ModelViewSet):
                     company_worker=sale_data.validated_data['company_worker'],
                     value=sale_data.validated_data['value'],
                     delivery=sale_data.validated_data['delivery'],
-                    total=sale_data.validated_data['total']
+                    # total=sale_data.validated_data['total']
                 )
                 products = []
                 for p in data['products']:
@@ -52,8 +53,8 @@ class SaleViewSet(viewsets.ModelViewSet):
                         company_worker=sale_data.validated_data['company_worker'],
                         sale=sale,
                         product=Product.objects.get(id=int(p['id'])),
-                        price=int(p['price']),
-                        quantity=int(p['quantity'])
+                        price=float(p['price']),
+                        quantity=float(p['quantity'])
                     )
                     products.append({
                         "id": sale_items.product.id,
@@ -87,12 +88,13 @@ class SaleViewSet(viewsets.ModelViewSet):
             data.append({
                 'sale': f'{sl.id}',
                 'company': f'{sl.company}',
-                'value': f'{sl.value}',
-                'delivery': f'{sl.delivery}',
-                'total': f'{sl.total}',
+                'value': sl.value,
+                'delivery': sl.delivery,
+                # 'total': f'{sl.total}',
                 'created': f'{sl.created}',
                 'products': products
             })
+            print(data)
         return Response(data, status=status.HTTP_200_OK)
     
     def partial_update(self, request, pk=None):
@@ -111,16 +113,16 @@ class SaleViewSet(viewsets.ModelViewSet):
         except:
             pass
         # total
-        try:
-            if body['total'] is not None:
-                sale.update(total=body['total'])
-        except:
-            pass
-        try:
-            if request.data['total'] is not None:
-                sale.update(total=request.data['total'])
-        except:
-            pass
+        # try:
+        #     if body['total'] is not None:
+        #         sale.update(total=body['total'])
+        # except:
+        #     pass
+        # try:
+        #     if request.data['total'] is not None:
+        #         sale.update(total=request.data['total'])
+        # except:
+        #     pass
         # canceled
         try:
             if body['canceled'] is not None:
@@ -136,10 +138,11 @@ class SaleViewSet(viewsets.ModelViewSet):
     
 @csrf_exempt
 def printPDF(request, id):
+    from reportlab.pdfgen import canvas
     import io
-    sale = models.Sale.objects.get(id=id)
-    sale_items = models.SaleItems.objects.filter(sale=id)
-    company = default.models.Company.objects.get(id=sale.company.id)
+    sale = Sale.objects.get(id=id)
+    sale_items = SaleItems.objects.filter(sale=id)
+    company = Company.objects.get(id=sale.company.id)
     buffer = io.BytesIO()
     cnv = canvas.Canvas(buffer, pagesize=(mm2p(72),mm2p(100)))
     line = 95
@@ -166,7 +169,7 @@ def printPDF(request, id):
         if sli.quantity == 0.5:
             cnv.drawString(mm2p(col),mm2p(line),'½ '+sli.product.name)
         else:
-            cnv.drawString(mm2p(col),mm2p(line),str(int(sli.quantity))+' - '+sli.product.name)
+            cnv.drawString(mm2p(col),mm2p(line),str(float(sli.quantity))+' - '+sli.product.name)
         cnv.drawString(mm2p(col+44),mm2p(line),str(sli.price))
         cnv.drawString(mm2p(col+53),mm2p(line),str(sli.price*sli.quantity))
         line += -4
@@ -199,105 +202,3 @@ def printPDF(request, id):
 
 def mm2p(milimetros):
     return milimetros / 0.352777
-
-
-
-from django.shortcuts import render, HttpResponse
-from django.http import FileResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.datastructures import MultiValueDictKeyError
-
-from setup.settings import BASE_DIR
-import register.models
-import default.models
-
-from default.views import verifyLogin
-from reportlab.pdfgen import canvas
-import uuid
- 
-from . import forms
-from . import models
-import json
-
-
-@csrf_exempt
-def addSale(request):
-    if request.method == "POST":
-        body = json.loads(request.body)
-        form = forms.AddSaleForm(body)
-        if form.is_valid():
-            last_id = form.save()
-            return HttpResponse(last_id.id, status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
-
-@csrf_exempt
-def addSaleItems(request):
-    if request.method == "POST":
-        body = json.loads(request.body)
-        for i in body["products"]:
-            model = register.models.ProductItems.objects.filter(company=body["company"],product=i["id"])
-            for m in model:
-                register.models.Product.objects.filter(company=body["company"],id=m.product_item.id).update(stock=round(m.product_item.stock-float(i["quantity"]),2))
-            data = {
-                "company": body["company"],
-                "company_worker": body["company_worker"],
-                "sale": body["sale"],
-                "product": i["id"],
-                "quantity": i["quantity"],
-                "price": i["price"],
-            }
-            form = forms.AddSaleItemsForm(data)
-            if form.is_valid():
-                form.save()
-            else:
-                return HttpResponse("Invalid form!", status=401, headers={'content-type': 'application/json'})
-        return HttpResponse(status=200, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
-
-@csrf_exempt
-def deleteSale(request):
-    if request.method == "POST":
-        body = json.loads(request.body)
-        if verifyLogin(body["token"]):
-            model = models.Sale.objects.filter(company=body["company"],id=body["sale"]).update(canceled=True)
-            return HttpResponse(status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Invalid login", status=40, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
-
-def getSale(request):
-    if request.method == 'GET':
-        get = request.GET
-        if verifyLogin(get["token"]):
-            data = []
-            model = models.Sale.objects.filter(company=get["company"], canceled=False).order_by('-id')
-            for m in model:
-                data.append({
-                    "id": m.id,
-                    "value": m.value,
-                    "delivery": m.delivery,
-                    "date": str(m.created).split(' ')[0],
-                })
-            return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Invalid Login", status=400, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
-
-def getSaleItems(request):
-    if request.method == 'GET':
-        get = request.GET
-        if verifyLogin(get["token"]):
-            data = []
-            model = models.SaleItems.objects.filter(company=get["company"]).order_by('-id')
-            for m in model:
-                data.append({
-                    "id": m.id,
-                    "sale": m.sale.id,
-                    "product_id": m.product.id,
-                    "product_name": m.product.name,
-                    "price": m.price,
-                    "quantity": m.quantity
-                })
-            return HttpResponse(json.dumps(data), status=200, headers={'content-type': 'application/json'})
-        return HttpResponse("Invalid Login", status=400, headers={'content-type': 'application/json'})
-    return HttpResponse("Need be a POST", status=402, headers={'content-type': 'application/json'})
-

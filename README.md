@@ -34,7 +34,7 @@ $ ]
 $ DATABASES = {
 $    'default': {
 $        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-$        'NAME': 'foodservice',
+$        'NAME': 'database',
 $        'USER': 'postgres',
 $        'PASSWORD': 'postgres',
 $        'HOST': 'localhost',
@@ -45,26 +45,6 @@ $ }
 $ LANGUAGE_CODE = 'pt-br'
 $ TIME_ZONE = 'America/Manaus'
 
-$ REST_FRAMEWORK = {
-$    'DEFAULT_AUTHENTICATION_CLASSES': (
-$        'rest_framework_simplejwt.authentication.JWTAuthentication',
-$    ),
-$ }
-$ SIMPLE_JWT = {
-$   'AUTH_HEADER_TYPES': ('JWT',),
-$ }
-
-# serve with hot reload at localhost:8000
-$ py manage.py runserver
-
-# build for production and launch server
-$ py manage.py 0.0.0.0:80
-
-# configuration for HTTP STATUS
-403 - NOT A POST
-402 - TOKEN INVALID
-401 - INTERNAL ERROR
-200 - OK
 ```
 
 
@@ -95,10 +75,19 @@ POST - deve seguir o seguindo modelo na requisição passando o TOKEN gerado no 
 ```
 PATCH - acessar a url com ID da venda e passando o paramêtro -> ?COMPANY= <- deve-se enviar o parâmetro a ser alterado
 Pode se passar qualquer um individualmente
+
+## Manipulação de produtos (/product/)
 ```
 {
-	"value": "40",
-	"delivery": "5",
-	"total": "45",
+    "type": null,
+    "name": "",
+    "stock": null,
+    "cost": null,
+    "price": null,
+    "company": null,
+    "company_worker": null,
+    "brand": null,
+    "measure": null,
+	"product_items": []
 }
 ```

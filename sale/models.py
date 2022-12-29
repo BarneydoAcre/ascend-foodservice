@@ -11,7 +11,7 @@ class Sale(models.Model):
     value = models.FloatField(blank=False)
     delivery = models.FloatField(blank=False, default=0)
     canceled = models.BooleanField(default=False)
-    total = models.FloatField(blank=False, default=0)
+    total = models.FloatField(blank=True, null=True, default=0)
     
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

@@ -4,5 +4,5 @@ from sale.views import *
 app_name = 'sale'
 
 urlpatterns = [
-    path('print/<int:id>/', printPDF),
+    path('print/sale/<int:id>/', printPDF),
 ]
