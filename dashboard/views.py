@@ -14,13 +14,13 @@ def sales_per_month(request, *args, **kwargs):
         EXTRACT(DAY FROM T1.created) AS dia,
         EXTRACT(MONTH FROM T1.created) AS mes,
         EXTRACT(YEAR FROM T1.created) AS ano,
-        SUM(T1."value"+T1."delivery") AS total_venda
+        SUM(T1."delivery") AS total_entrega
+        SUM(T1."value") AS total_valor
         
     FROM "sale_sale" T1
-        LEFT JOIN "default_company" ON (T1."company_id" = "default_company"."id") 
         
     WHERE
-        T1."canceled" <> false AND
+        T1."canceled" = false AND
         T1."company_id" = {get_object_or_404(Company, slug=kwargs['company']).id}
         
     GROUP BY
