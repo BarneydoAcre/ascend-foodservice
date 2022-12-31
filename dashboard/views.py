@@ -14,7 +14,7 @@ def sales_per_month(request, *args, **kwargs):
         EXTRACT(DAY FROM T1.created) AS dia,
         EXTRACT(MONTH FROM T1.created) AS mes,
         EXTRACT(YEAR FROM T1.created) AS ano,
-        SUM(T1."value"+T1."delivery") AS total_valor
+        SUM(T1."value"+T1."delivery") AS total_venda
         
     FROM "sale_sale" T1
         
