@@ -22,6 +22,7 @@ urlpatterns = [
     # path('api-auth/', include('django.contrib.auth.urls')),
     # path('auth/', include('djoser.urls.jwt')),
     path('', include('sale.urls')),
+    path('dashboard/', include('dashboard.urls')),
     # path('auth/signin/', LoginViewSet.as_view()),
     # path('auth/signup/', LoginViewSet.as_view()),
 ]
