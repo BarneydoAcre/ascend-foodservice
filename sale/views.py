@@ -139,6 +139,7 @@ class SaleViewSet(viewsets.ModelViewSet):
 @csrf_exempt
 def printPDF(request, id):
     from reportlab.pdfgen import canvas
+    from reportlab_qrcode import QRCodeImage
     import io
     sale = Sale.objects.get(id=id)
     sale_items = SaleItems.objects.filter(sale=id)
@@ -181,15 +182,18 @@ def printPDF(request, id):
     line += -4
     cnv.drawString(mm2p(col-1),mm2p(line),l)
     line += -4
-    cnv.setFont("Helvetica", 10)
+    cnv.setFont("Helvetica-Bold", 10)
     cnv.drawString(mm2p(col-1),mm2p(line),"Total_______________________"+str(round(total+delivery,3)))
     cnv.setFont("Helvetica", 8)
     line += -1
     cnv.drawString(mm2p(col-1),mm2p(line),l)
     line += -20
     if len(company.pix_key) > 3:
-        cnv.setFont("Helvetica", 12)
-        cnv.drawString(mm2p(col+3),mm2p(7),"Chave PIX: CPF -"+sale.company.pix_key)
+        # cnv.setFont("Helvetica", 12)
+        # cnv.drawString(mm2p(col+3),mm2p(7),"Chave PIX: CPF -"+sale.company.pix_key)
+        qr = QRCodeImage('00020126360014BR.GOV.BCB.PIX0114+55679982137795204000053039865802BR5920Lia Keli Bueno Fauth6009SAO PAULO61080540900062070503***63049053', 
+                         size=mm2p(30))
+        qr.drawOn(cnv, mm2p(19), mm2p(3))
     cnv.setFont("Helvetica", 6)
     cnv.drawString(mm2p(col+25),mm2p(3),"Versão 0.00.002")
     cnv.drawString(mm2p(col+25),mm2p(1),l)
