@@ -20,7 +20,7 @@ def sales_per_month(request, *args, **kwargs):
         LEFT JOIN "default_company" ON (T1."company_id" = "default_company"."id") 
         
     WHERE
-        T1."canceled" is not false AND
+        T1."canceled" <> false AND
         T1."company_id" = {get_object_or_404(Company, slug=kwargs['company']).id}
         
     GROUP BY
