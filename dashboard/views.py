@@ -27,7 +27,9 @@ def sales_per_month(request, *args, **kwargs):
 	1, 2, 3
     
     ORDER BY
-        mes ASC
+        ano ASC,
+        mes ASC,
+        dia ASC
     ''')
     return HttpResponse(instance)
 
