@@ -1,8 +1,11 @@
 from django.http import HttpResponse, JsonResponse
 from setup.utils import model_to_json_dumped, manual_query
 from django.forms.models import model_to_dict
-from sale.models import *
+from django.shortcuts import get_object_or_404
+
 import json
+from sale.models import *
+from default.models import *
 
 
 def sales_per_month(request, *args, **kwargs):
@@ -18,7 +21,7 @@ def sales_per_month(request, *args, **kwargs):
         
     WHERE
         T1."canceled" is not false AND
-        T1."company_id" = {0 if kwargs['company'] == None else kwargs['company']}
+        T1."company_id" = {get_object_or_404(Company, slug=kwargs['company']).id}
         
     GROUP BY
 	1, 2, 3

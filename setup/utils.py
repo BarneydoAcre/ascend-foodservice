@@ -11,7 +11,6 @@ def converter(obj):
         return obj.isoformat()
     if isinstance(obj, Decimal):
         return str(obj)
-    
     raise TypeError (f"{type(obj)} variable error")
 
 def model_to_json_dumped(instance):
