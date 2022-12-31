@@ -5,22 +5,26 @@ from sale.models import *
 import json
 
 
-def sales_per_month(request):
+def sales_per_month(request, *args, **kwargs):
     instance = manual_query(f'''
-    SELECT
+     SELECT
+        EXTRACT(DAY FROM T1.created) AS dia,
         EXTRACT(MONTH FROM T1.created) AS mes,
         EXTRACT(YEAR FROM T1.created) AS ano,
         SUM(T1."value"+T1."delivery") AS total_venda
         
     FROM "sale_sale" T1
-        INNER JOIN "default_company" ON (T1."company_id" = "default_company"."id") 
+        LEFT JOIN "default_company" ON (T1."company_id" = "default_company"."id") 
         
     WHERE
         T1."canceled" is not false AND
-        T1."company_id" = 1
+        T1."company_id" = {0 if kwargs['company'] == None else kwargs['company']}
         
     GROUP BY
-	1, 2
+	1, 2, 3
+    
+    ORDER BY
+        mes ASC
     ''')
     return HttpResponse(instance)
 

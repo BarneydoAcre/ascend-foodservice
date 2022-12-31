@@ -4,5 +4,5 @@ from dashboard.views import *
 app_name = 'dashboard'
 
 urlpatterns = [
-    path('sales/', sales_per_month),
+    path('sales/<int:company>/', sales_per_month),
 ]
