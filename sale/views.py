@@ -195,7 +195,7 @@ def printPDF(request, id):
                          size=mm2p(30))
         qr.drawOn(cnv, mm2p(19), mm2p(3))
     cnv.setFont("Helvetica", 6)
-    cnv.drawString(mm2p(col+25),mm2p(3),"Versão 0.00.002")
+    cnv.drawString(mm2p(col+25),mm2p(3),"Versão 0.00.003")
     cnv.drawString(mm2p(col+25),mm2p(1),l)
 
     cnv.showPage()

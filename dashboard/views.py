@@ -11,9 +11,9 @@ from default.models import *
 def sales_per_month(request, *args, **kwargs):
     instance = manual_query(f'''
      SELECT
-        EXTRACT(DAY FROM T1.created) AS dia,
-        EXTRACT(MONTH FROM T1.created) AS mes,
-        EXTRACT(YEAR FROM T1.created) AS ano,
+        EXTRACT(DAY FROM T1."created") AS dia,
+        EXTRACT(MONTH FROM T1."created") AS mes,
+        EXTRACT(YEAR FROM T1."created") AS ano,
         SUM(T1."value"+T1."delivery") AS total_venda
         
     FROM "sale_sale" T1
